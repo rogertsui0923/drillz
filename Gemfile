@@ -30,6 +30,16 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'cancancan'
+gem 'simple_form'
+gem 'friendly_id'
+gem 'carrierwave'
+gem 'bootstrap-sass'
+gem 'cocoon'
+gem 'aasm'
+gem 'delayed_job_active_record'
+gem 'delayed_job_web'
+gem 'sinatra', '2.0.0.beta2'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -42,6 +52,8 @@ group :development, :test do
   gem 'interactive_editor'
   gem 'awesome_print'
   gem 'hirb'
+  gem 'faker'
+  gem 'letter_opener'
 end
 
 group :development do
