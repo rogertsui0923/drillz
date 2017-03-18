@@ -1,0 +1,25 @@
+Here is a text file to record necessary changes to our implementation.
+
+Roger:
+  It makes very little sense to associate drills and solutions with their
+  creators since any instructor should have the power to edit and delete. We
+  ought to remove the user_id columns for both drills and solutions.
+
+  Needed addition: implement another join table between users and drill_groups.
+  It would keep track of how many times a user has finished a drill_group and
+  the score for each attempt. When the student decides to reattempt the
+  drill_group that they did not get a perfect score on, we can then use the
+  attempts table to figure out which ones haven't been answered correctly.
+
+  How should we implement a drill_group session?
+  2 ways:
+    Load all the drills in a drill_group into show page and have jquery handle
+    next drill. The testing page will then be effectively a single page app.
+    This is probably the easier way.
+
+    Save each attempt of drill into database. We will either:
+      Use a new table to store temporary attempts just for that quiz session or
+
+      Change the current attempts table to just store attempts and correctness
+
+  I would like to discuss these implementations
