@@ -1,0 +1,7 @@
+<%= simple_form_for @user do |f|  %>
+  <%= @user.errors.full_messages.join(', ') %>
+  <%= f.input :first_name %>
+  <%= f.input :last_name %>
+  <%= f.input :email %>
+  <%= f.submit "Save changes" %>
+<% end %>
