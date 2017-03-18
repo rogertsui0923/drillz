@@ -11,15 +11,20 @@ Roger:
   drill_group that they did not get a perfect score on, we can then use the
   attempts table to figure out which ones haven't been answered correctly.
 
+  rails g model group_attempts user:references drill_group:references score:float
+
   How should we implement a drill_group session?
   2 ways:
     Load all the drills in a drill_group into show page and have jquery handle
     next drill. The testing page will then be effectively a single page app.
-    This is probably the easier way.
+    This is probably the easier way. However,
 
     Save each attempt of drill into database. We will either:
       Use a new table to store temporary attempts just for that quiz session or
 
-      Change the current attempts table to just store attempts and correctness
+      Change the current attempts table to just store attempts and correctness or
+
+      Have a table call quiz session with ID. Then attempts can be stored with a
+      quiz session ID
 
   I would like to discuss these implementations

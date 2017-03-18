@@ -9,7 +9,6 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.integer :points
       t.integer :donuts
       t.boolean :is_admin
-      t.boolean :is_instructor
 
       t.timestamps
     end
