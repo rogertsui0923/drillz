@@ -1,0 +1,20 @@
+<h1>Drill Group: <%= @drill_group.name %></h1>
+
+<%= link_to 'Edit Group', edit_drill_group_path(@drill_group) %>
+
+<h3><%= @drill_group.description %></h3>
+
+<% if @drills.present? %>
+  <% @drills.each do |drill| %>
+    <div>
+      <%= drill.description %>
+      <%= link_to 'Edit', edit_drill_path(drill) %>
+      <%= link_to 'Delete', drill, method: :delete %>
+    </div>
+  <% end %>
+<% end %>
+
+<h2>Add New Drill</h2>
+<%#= simple_form_for [@drill_group, @drill] do |f| %>
+  <%#= f.input :description %>
+<%# end %>
