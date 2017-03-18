@@ -1,3 +1,18 @@
-<h1>signed up!</h1>
+<div class="container">
+  <h1>Leaderboard</h1>
+
+  <% @users.each do |user| %>
+    <div>
+      <div><%= user.first_name %> <%= user.points %> points / <%= user.donuts %> donuts</div>
+    </div>
+    <hr>
+  <% end %>
+
+  <h1>YOU</h1>
+  <div>
+    <div><%= current_user.points %> points </div>
+    <div><%= current_user.donuts %> donuts </div>
+  </div>
+</div>
 
 <!-- replace this with the signed in home page -->

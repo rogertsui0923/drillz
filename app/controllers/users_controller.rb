@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def index
-
+    # @users = Users.all
+    @users = User.order(points: :desc, donuts: :desc)
   end
 
   def new
