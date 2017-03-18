@@ -9,4 +9,9 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
 
   resources :drill_groups
+
+  resources :drills, shallow: true do
+    resources :solutions
+  end
+  
 end
