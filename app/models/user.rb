@@ -1,12 +1,11 @@
 class User < ApplicationRecord
   has_secure_password
 
-  has_many :drills, dependent: :nullify
-  has_many :solutions, dependent: :nullify
   has_many :favourites, dependent: :destroy
   has_many :favourite_drill_groups, through: :favourites, source: :drill_group
   has_many :attempts, dependent: :destroy
   has_many :attempted_drills, through: :attempts, source: :drill
+  has_many :group_sessions, dependent: :destroy
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :first_name, presence: true
@@ -24,6 +23,5 @@ class User < ApplicationRecord
     self.points ||= 0
     self.donuts ||= 0
     self.is_admin ||= false
-    self.is_instructor ||= false
   end
 end
