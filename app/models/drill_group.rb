@@ -10,4 +10,9 @@ class DrillGroup < ApplicationRecord
   validates :description, presence: true
   validates :level, presence: true
   validates :points, presence: true
+
+  def find_favourite_by_user(user)
+    favourites.find_by(user: user)
+  end
+
 end
