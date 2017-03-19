@@ -1,0 +1,16 @@
+<h1>PasswordResets#edit</h1>
+<%= form_for @user do |f|%>
+
+  <div class = "field form-group ">
+    <%= f.label :new_password, class: ' control-label form-label' %>
+    <%= f.password_field :password, class: 'form-control form-input' %>
+  </div>
+
+
+  <div class = "field form-group ">
+    <%= f.label :password_confirmation, class: 'control-label form-label' %>
+    <%= f.password_field :password_confirmation, class: 'form-control form-input' %>
+  </div>
+
+  <%= f.submit class: 'btn'  %>
+<% end %>

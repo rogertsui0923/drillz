@@ -38,10 +38,12 @@ class UsersController < ApplicationController
     user_params = params.require(:user).permit(:first_name, :last_name, :email)
     @user = current_user
 
-    if @user.update(user_params)
-      redirect_to root_path(@user)
-    else
-      render :edit
-    end
+    # render json: params[:user][:email]
+        @user = User.find_by(email: params[:user][:email])
+        if @user.update(password: params[:user][:password])
+          redirect_to root_path(@user)
+        else
+          render :edit
+        end
   end
 end
