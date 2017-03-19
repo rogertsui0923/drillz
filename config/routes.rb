@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root 'users#index' # <---- change this
+  
+  resources :passwords_resets, only: [:new, :create, :edit, :update]
+
 
   resources :favourites, only: [:create, :destroy]
 
@@ -17,7 +20,9 @@ Rails.application.routes.draw do
   resources :drill_groups, shallow: true do
     resources :drills, only: [:create, :update, :destroy, :edit, :show] do
       resources :solutions#, only: [
+      resources :attempts
     end
   end
+
 
 end
