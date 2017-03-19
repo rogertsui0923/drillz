@@ -8,10 +8,10 @@ Rails.application.routes.draw do
   # the profile link on the wireframe could direct to user#show
   resources :sessions, only: [:new, :create, :destroy]
 
-  resources :drill_groups
-
-  resources :drills, shallow: true do
-    resources :solutions
+  resources :drill_groups, shallow: true do
+    resources :drills, only: [:create, :update, :destroy, :edit] do
+      resources :solutions#, only: [
+    end
   end
 
 end

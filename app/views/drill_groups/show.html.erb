@@ -1,0 +1,39 @@
+<!-- drill group -->
+
+<h1>Drill Group: <%= @drill_group.name %></h1>
+
+<%= link_to 'Edit Group', edit_drill_group_path(@drill_group) %>
+<h3><%= @drill_group.description %></h3>
+
+<hr>
+
+<!-- drill form -->
+
+<div>
+  <h2>Add New Drill</h2>
+
+    <h4>Drill Description</h4>
+
+    <%= render partial: 'drill_form', locals: {drill: @drill} %>
+</div>
+
+<hr>
+
+<!-- drill list -->
+
+<% if @drills.present? %>
+  <% @drills.each do |drill| %>
+    <div>
+      <h3><%= drill.description %></h3>
+      <%# 👇 need to change after implementing SlideDown thing %>
+      <%= link_to 'Edit', edit_drill_path(drill) %>
+      <%= link_to 'Delete', drill, method: :delete %>
+    </div>
+
+    <%# 👇 this form will slide down when 'Edit' button clicked %>
+    <% if true %>
+      <%= render partial: 'edit_drill_form', locals: {drill: drill} %>
+    <% end %>
+
+  <% end %>
+<% end %>

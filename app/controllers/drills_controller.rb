@@ -23,9 +23,8 @@ class DrillsController < ApplicationController
   end
 
   def update
-    @drill_group = DrillGroup.find params[:drill_group_id]
-    @drill.drill_group = @drill_group
-    if @drill.update params[:id]
+    @drill_group = @drill.drill_group
+    if @drill.update drill_params
       redirect_to @drill_group, notice: 'Update successful'
     else
       redirect_to @drill_group, notice: 'Update Failed'
@@ -33,24 +32,30 @@ class DrillsController < ApplicationController
   end
 
   def edit
-    @drill_group = DrillGroup.find params[:drill_group_id]
-    @drill.drill_group = @drill_group
+    # @drill_group
+    # @drill_group = DrillGroup.find params[:drill_group_id]
+    # @drill.drill_group = @drill_group
   end
 
   def destroy
     if @drill.destroy
-      redirect_to @drill_group, notice: 'Drill is destroyed'
+      redirect_to @drill.drill_group, notice: 'Drill is destroyed'
     else
-      redirect_to @drill_group, notice: 'Cannot destroy View'
+      redirect_to @drill.drill_group, notice: 'Cannot destroy View'
     end
   end
 
   private
+
   def find_drill
     @drill = Drill.find params[:id]
   end
 
   def drill_params
-    drill_params =  params.require(:drill).permit(:description, :drill_group_id)
+    drill_params = params.require(:drill).permit(:description,
+                                                  {solutions_attributes:
+                                                    [:id,
+                                                     :body,
+                                                     :_destroy] })
   end
 end
