@@ -2,10 +2,52 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/* Singe User Show */
+.view-user-profile {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  margin-top: 60px;
+}
+.user-stats p {
+  margin-bottom: 0;
+    &:nth-child(1) {
+      margin-top: 10px;
+    }
+}
+
+.edit-action {
+  margin-top: 10px;
+    a {
+      color: $green;
+      &:hover {
+        color: darken($green, 20%);
+      }
+  }
+}
+
 /* User Show */
-.profile_picture {
-  max-width: 230px;
-  max-height: 230px;
+.user-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2em;
+    p {
+      margin-bottom: 1px;
+    }
+}
+
+.profile-picture {
+  width: 150px;
+  height: 150px;
+}
+
+.large-profile {
+  width: 250px;
+  height: 250px;
+}
+
+.profile-picture, .large-profile {
   border-radius: 50%;
   overflow: hidden;
   background-color: $green;
@@ -50,43 +92,36 @@
 
 /* Edit*/
 .action-items {
+  margin-top: 9px;
   display: flex;
   justify-content: space-between;
 }
 
 /* Leaderboard */
 .small-doughnut {
-  width: 30px;
-  height: 30px;
+  width: 18px;
+  height: 18px;
+  margin-left: 7px;
 }
 
 /* Thank You for Signing Up */
+.notify-title {
+  text-align: center;
+  margin-top: 60px;
+}
+
 .flex-box {
   display: flex;
-  justify-content: center;
+  align-items: center;
 }
 
-.column-flex{
-  flex-direction: column;
-}
-
-.notify-title {
-  margin-top: 100px;
-  font-size: 60px;
-}
-
-.lightsaber {
-  width: 100%
+.yoda-head {
+  height: 300px;
+  width: 300px;
 }
 
 @media only screen and (max-width: 480px) {
-  .lightsaber {
-    -webkit-transform: rotate(90deg) translate(150px, 1px);
-    -ms-transform: rotate(90deg) translate(150px, 1px);
-    transform: rotate(90deg) translate(150px, 1px);
-  }
-
-  .notify-title {
-    margin-top: 30px;
+  .user-profile {
+    padding-bottom: 20px;
   }
 }

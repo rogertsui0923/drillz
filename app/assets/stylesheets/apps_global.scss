@@ -14,17 +14,19 @@ body {
   background-color: $black;
 }
 
-h1, h2, h3, h4, h5, h6, p, a, td {
+h1, h2, h3, h4, h5, h6, p, a, td, th {
   font-family: $font-stack;
   color: $offwhite;
 }
 
 a {
+  color: $green;
   font-size: 15px;
 }
+
 a:hover {
   text-decoration: none;
-  color: $green;
+  color: darken($green, 20%);
 }
 
 /* Form Styling */
@@ -40,7 +42,7 @@ input {
   color: $black;
 }
 
-textarea.form-control {
+.form-control {
   background-color: #333;
   border: 1px solid #222;
   color: $offwhite;

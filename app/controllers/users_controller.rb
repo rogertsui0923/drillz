@@ -1,18 +1,23 @@
 class UsersController < ApplicationController
+  def home
+
+  end
+
   def index
     # @users = Users.all
-    @users = User.order(points: :desc, donuts: :desc)
+    @users = User.order(points: :desc, donuts: :desc).limit(20)
   end
 
   def show
-    #thanks for signing up!
+    @user = current_user
   end
 
   def new
     @user = User.new
   end
 
-  def profile
+  def signup
+    # thanks for signing up
   end
 
   def create
@@ -20,10 +25,14 @@ class UsersController < ApplicationController
     @user = User.new user_params
 
     if @user.save
-      UsersMailer.notify_user_sign_up(@user).deliver_now!
+      @admins = User.where(is_admin: true)
+
+      @admins.each do |admin|
+        UsersMailer.notify_user_sign_up(@user, admin).deliver_now!
+      end
       # session[:user_id] = @user.id
       # redirect_to root_path, notice: 'signed up'
-      redirect_to user_path(:id)
+      redirect_to signup_users_path
     else
       render :new
     end
@@ -38,11 +47,32 @@ class UsersController < ApplicationController
     @user = current_user
 
         if @user.update(user_params)
-          redirect_to root_path(@user)
+          redirect_to user_path(@user)
         else
           render :edit
         end
   end
 
+  def update_password
+
+    @user = current_user
+
+    if @user.authenticate(params[:current_password])
+
+      if params[:current_password] === params[:password]
+        flash.now[:alert] =  "Passwords must be different than before"
+        render :edit
+      elsif @user.update(password: params[:password], password_confirmation: params[:password_confirmation])
+        redirect_to root_path(@user), notice: 'Password Updated'
+      else
+        flash.now[:alert] =  "Passwords don't match"
+        render :edit
+      end
+
+    else
+      flash.now[:alert] = "Current password is Incorrect"
+      render :edit
+    end
+  end
 
 end
