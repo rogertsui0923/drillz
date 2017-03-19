@@ -1,0 +1,12 @@
+.drill-group-actions {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+}
+
+.action-button {
+  margin: 0 13px;
+  padding: 2px 10px;
+  background-color: goldenrod;
+  border-radius: 2px;
+}

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170318170121) do
+ActiveRecord::Schema.define(version: 20170318234720) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,8 +80,9 @@ ActiveRecord::Schema.define(version: 20170318170121) do
     t.integer  "points"
     t.integer  "donuts"
     t.boolean  "is_admin"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.boolean  "is_approved",     default: false
   end
 
   add_foreign_key "attempts", "drills"

@@ -1,0 +1,55 @@
+<!-- index view for normal user -->
+
+<div class="container-fluid"> <!-- Main post container -->
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+      <h1>Drill Groups Index</h1>
+
+    <!-- Drills tabs -->
+    <div class="drill-tabs">
+      <ul class="nav nav-tabs" role="tablist">
+         <li role="presentation" class="active"><a href="#my-drills" aria-controls="home" role="tab" data-toggle="tab">My Drills</a></li>
+         <li role="presentation"><a href="#all-drills" aria-controls="profile" role="tab" data-toggle="tab">All Drills</a></li>
+      </ul>
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="my-drills">
+          <div class="tab-text">
+
+            <%# if @user.favourite_drill_groups %>
+              <% @user.favourite_drill_groups.each do |drill_group| %>
+                <div class="drills-box left-col">
+                  <h4><%= drill_group.name %></h4>
+                  <%= link_to 'Start' %>
+                  <%= link_to 'Remove',
+                      favourite_path(drill_group.find_favourite_by_user(@user)),
+                      method: :delete %>
+                </div>
+              <% end %>
+
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="all-drills">
+          <div class="tab-text">
+
+            <% @drill_groups.each do |drill_group| %>
+              <div class="drills-box left-col">
+                <h4><%= drill_group.name %></h4>
+                <p><%= button_to 'Add To My Drills',
+                       favourites_path({drill_group_id: drill_group.id}),
+                       class: 'btn btn-primary' %></p>
+              </div>
+            <% end %>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- Main page content ends here -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/tabs.js"></script>

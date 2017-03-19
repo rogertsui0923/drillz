@@ -1,0 +1,15 @@
+
+<%#= @drill_group.errors.full_messages %>
+
+<%= simple_form_for @drill_group do |f| %>
+  <%= f.input :name, required: false %>
+  <%= f.input :description, required: false %>
+  <%= f.collection_radio_buttons :level, [
+                                  ['beginner', 'Beginner'],
+                                  ['intermediate', 'Intermediate'],
+                                  ['advanced', 'Advanced'] ],
+                                  :first,
+                                  :last %>
+  <%= f.input :points, required: false %>
+  <%= f.submit 'Save' %>
+<% end %>
