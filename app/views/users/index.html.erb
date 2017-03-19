@@ -1,36 +1,37 @@
-<%= render "layouts/header" %>
-<%= render "layouts/nav" %>
-
 <div class="container-fluid">
   <div class="row">
     <div class="col-xs-12 col-sm-offset-1 col-sm-7">
       <h1 class="leaderboard_title"> Leaderboard</h1>
       <table class="table">
+        <thead>
+          <th>Name</th>
+          <th>Points</th>
+          <th>Donuts<%=image_tag('doughnut.png', :class=>'small-doughnut')%></th>
+        </thead>
         <tbody>
           <% @users.each do |user| %>
-            <tr>
-              <td><%= user.first_name %></td>
-              <td><%= user.points %> points</td>
-              <td><%= user.donuts %><%#=image_tag('doughnut.png', :class=>'small-doughnut')%></td>
-            </tr>
+          <tr>
+            <td><%= user.first_name %></td>
+            <td><%= user.points %></td>
+            <td><%= user.donuts %></td>
+          </tr>
           <% end %>
         </tbody>
       </table>
     </div>
 
-    <div class="col-xs-12 col-sm-offset-1 col-sm-3">
+    <div class="col-xs-12 col-sm-3 user-profile">
       <div class="profile_picture">
         <%= image_tag("light_avatar.png", :class=>"avatar")%>
       </div>
       <% if user_signed_in? %>
-        <div>
-          <h1><%= current_user.first_name %></h1>
-          <p> <%= current_user.email %></p>
+        <div class="user-profile-stats">
+          <h2><%= current_user.first_name %></h2>
+          <p><%= current_user.email %></p>
           <p>points: <%= current_user.points %></p>
           <p>doughnuts: <%= current_user.donuts %></p>
         </div>
       <% end %>
     </div>
-
   </div>
 </div>
