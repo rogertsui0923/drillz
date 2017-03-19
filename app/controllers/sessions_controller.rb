@@ -4,14 +4,18 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by_email params[:email]
+      if @user&.authenticate params[:password]
+        if @user.is_approved?
+          session[:user_id] = @user.id
+          redirect_to root_path, notice: 'Signed in!'
+        else
+          redirect_to root_path, notice: 'Your account hasn\'t been authenticated yet'
+        end
 
-    if @user&.authenticate params[:password]
-      session[:user_id] = @user.id
-      redirect_to root_path, notice: 'Signed in!'
-    else
-      flash[:now] = 'Wrong credentials'
-      render :new
-    end
+      else
+        flash[:now] = 'Wrong credentials'
+        render :new
+      end
   end
 
   def destroy
