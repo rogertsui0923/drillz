@@ -37,10 +37,12 @@ class UsersController < ApplicationController
     user_params = params.require(:user).permit(:first_name, :last_name, :email)
     @user = current_user
 
-    if @user.update(user_params)
-      redirect_to root_path(@user)
-    else
-      render :edit
-    end
+        if @user.update(user_params)
+          redirect_to root_path(@user)
+        else
+          render :edit
+        end
   end
+
+
 end
