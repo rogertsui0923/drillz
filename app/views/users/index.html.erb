@@ -8,11 +8,13 @@
     <hr>
   <% end %>
 
+  <% if user_signed_in? %>
   <h1>YOU</h1>
   <div>
-    <div><%= current_user.points %> points </div>
-    <div><%= current_user.donuts %> donuts </div>
+      <div><%= current_user.points %> points </div>
+      <div><%= current_user.donuts %> donuts </div>
   </div>
+  <% end %>
 </div>
 
 <!-- replace this with the signed in home page -->
