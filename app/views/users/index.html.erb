@@ -21,15 +21,15 @@
     </div>
 
     <div class="col-xs-12 col-sm-3 user-profile">
-      <div class="profile_picture">
+      <div class="profile-picture">
         <%= image_tag("light_avatar.png", :class=>"avatar")%>
       </div>
       <% if user_signed_in? %>
         <div class="user-profile-stats">
           <h2><%= current_user.first_name %></h2>
           <p><%= current_user.email %></p>
-          <p>points: <%= current_user.points %></p>
-          <p>doughnuts: <%= current_user.donuts %></p>
+          <p>Points: <%= current_user.points %></p>
+          <p>Donuts: <%= current_user.donuts %></p>
         </div>
       <% end %>
     </div>

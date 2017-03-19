@@ -1,20 +1,53 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* Singe User Show */
+.view-user-profile {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  margin-top: 60px;
+}
+.user-stats p {
+  margin-bottom: 0;
+    &:nth-child(1) {
+      margin-top: 10px;
+    }
+}
+
+.edit-action {
+  margin-top: 10px;
+    a {
+      color: $green;
+      &:hover {
+        color: darken($green, 20%);
+      }
+  }
+}
+
 /* User Show */
 .user-profile {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 1.67em;
+  padding-top: 2em;
     p {
       margin-bottom: 1px;
     }
 }
 
-.profile_picture {
+.profile-picture {
   width: 150px;
   height: 150px;
+}
+
+.large-profile {
+  width: 250px;
+  height: 250px;
+}
+
+.profile-picture, .large-profile {
   border-radius: 50%;
   overflow: hidden;
   background-color: $green;
@@ -59,6 +92,7 @@
 
 /* Edit*/
 .action-items {
+  margin-top: 9px;
   display: flex;
   justify-content: space-between;
 }
@@ -84,4 +118,10 @@
 .yoda-head {
   height: 300px;
   width: 300px;
+}
+
+@media only screen and (max-width: 480px) {
+  .user-profile {
+    padding-bottom: 20px;
+  }
 }
