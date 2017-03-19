@@ -1,3 +1,90 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* User Show */
+.profile_picture {
+  max-width: 230px;
+  max-height: 230px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: $green;
+  padding: 10px;
+  padding-bottom: 15px;
+  text-align: center;
+}
+
+.avatar {
+  max-width: 100%;
+}
+
+.flex-box {
+  display: flex;
+  justify-content: center;
+  overflow: visible;
+}
+
+.main {
+  padding-top: 40px;
+  background-color: $black;
+}
+
+.user-info {
+  color: $offwhite;
+}
+
+.inline {
+  display: inline;
+}
+
+.doughnuts {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.doughnut {
+  width: 100px;
+  height: 100px;
+}
+
+/* Leaderboard */
+.leaderboard_title {
+  font-size: 60px;
+}
+
+.small-doughnut {
+  width: 30px;
+  height: 30px;
+}
+
+/* Thank You for Signing Up */
+.flex-box {
+  display: flex;
+  justify-content: center;
+}
+
+.column-flex{
+  flex-direction: column;
+}
+
+.notify-title {
+  margin-top: 100px;
+  font-size: 60px;
+}
+
+.lightsaber {
+  width: 100%
+}
+
+@media only screen and (max-width: 480px) {
+  .lightsaber {
+    -webkit-transform: rotate(90deg) translate(150px, 1px);
+    -ms-transform: rotate(90deg) translate(150px, 1px);
+    transform: rotate(90deg) translate(150px, 1px);
+  }
+
+  .notify-title {
+    margin-top: 30px;
+  }
+}
