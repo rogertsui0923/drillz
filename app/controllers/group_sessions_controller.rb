@@ -10,8 +10,4 @@ class GroupSessionsController < ApplicationController
   end
 
 
-
-
-
-
 end
