@@ -1,18 +1,19 @@
 class UsersController < ApplicationController
   def index
     # @users = Users.all
-    @users = User.order(points: :desc, donuts: :desc)
+    @users = User.order(points: :desc, donuts: :desc).limit(20)
   end
 
   def show
-    #thanks for signing up!
+    @user = current_user
   end
 
   def new
     @user = User.new
   end
 
-  def profile
+  def signup
+    # thanks for signing up
   end
 
   def create
@@ -27,7 +28,7 @@ class UsersController < ApplicationController
       end
       # session[:user_id] = @user.id
       # redirect_to root_path, notice: 'signed up'
-      redirect_to user_path(:id)
+      redirect_to signup_users_path
     else
       render :new
     end

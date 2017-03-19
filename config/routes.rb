@@ -2,14 +2,14 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root 'users#index' # <---- change this
-  
+
   resources :passwords_resets, only: [:new, :create, :edit, :update]
 
 
   resources :favourites, only: [:create, :destroy]
 
   resources :users, only: [:new, :create, :edit, :update, :show] do
-    get '/profile' => 'users#profile'
+    get '/signup' => 'users#signup', on: :collection
     post '/password_change' => 'users#update_password'
   end
 
