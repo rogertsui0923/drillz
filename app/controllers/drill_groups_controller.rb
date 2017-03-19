@@ -21,14 +21,12 @@ class DrillGroupsController < ApplicationController
 
   def create
     @drill_group = DrillGroup.new drill_group_params
-
     if @drill_group.save
       redirect_to @drill_group, notice: 'Created New Drill Group!'
     else
       flash[:now] = 'Please fix the error below'
       render :new
     end
-
   end
 
   def show

@@ -3,19 +3,19 @@ Rails.application.routes.draw do
 
   root 'users#index' # <---- change this
 
-  # resources :users, only: [:new, :create, :edit, :update, :show] do
-  #   resources :favourites, only: [:index, :create, :show, :destory]
-  # end
-
-  resources :users, only: [:new, :create, :edit, :update, :show]
   resources :favourites, only: [:create, :destroy]
+
+  resources :users, only: [:new, :create, :edit, :update, :show] do
+    get '/profile' => 'users#profile'
+  end
+
 
   # leaderboard could use user#index
   # the profile link on the wireframe could direct to user#show
   resources :sessions, only: [:new, :create, :destroy]
 
   resources :drill_groups, shallow: true do
-    resources :drills, only: [:create, :update, :destroy, :edit] do
+    resources :drills, only: [:create, :update, :destroy, :edit, :show] do
       resources :solutions#, only: [
     end
   end

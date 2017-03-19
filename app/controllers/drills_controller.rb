@@ -13,13 +13,14 @@ class DrillsController < ApplicationController
   end
 
   def show
-    if @drill.next
-      # redirect back to the next drill show page
-      redirect_to drill_path(@drill)
-    else
-      # There are no more drills
-      # redirect back to result page
-    end
+    @solution = Solution.new
+  end
+
+  def attempts
+    #id of the current drill
+    #user pressed the next drill button
+    #Find the group session for the current drill
+    #call the show page
   end
 
   def update
@@ -46,7 +47,6 @@ class DrillsController < ApplicationController
   end
 
   private
-
   def find_drill
     @drill = Drill.find params[:id]
   end

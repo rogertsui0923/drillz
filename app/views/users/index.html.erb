@@ -1,20 +1,32 @@
-<div class="container">
-  <h1>Leaderboard</h1>
+<%= render "layouts/header" %>
+<%= render "layouts/nav" %>
 
+<div class="col-sm-offset-1 col-sm-6">
+  <h1 class="leaderboard_title"> Leaderboard</h1>
+  <table class="table ">
+
+  <tbody>
   <% @users.each do |user| %>
-    <div>
-      <div><%= user.first_name %> <%= user.points %> points / <%= user.donuts %> donuts</div>
-    </div>
-    <hr>
+    <tr>
+      <td><%= user.first_name %></td>
+      <td><%= user.points %> points</td>
+      <td><%= user.donuts %><%#=image_tag('doughnut.png', :class=>'small-doughnut')%></td>
+    </tr>
   <% end %>
-
-  <% if user_signed_in? %>
-  <h1>YOU</h1>
-  <div>
-      <div><%= current_user.points %> points </div>
-      <div><%= current_user.donuts %> donuts </div>
-  </div>
-  <% end %>
+  </tbody>
+</table>
 </div>
 
-<!-- replace this with the signed in home page -->
+<div class="col-sm-offset-1 col-sm-3">
+  <div class="profile_picture">
+    <%= image_tag("light_avatar.png", :class=>"avatar")%>
+  </div>
+
+<% if user_signed_in? %>
+  <div>
+    <h1><%= current_user.first_name %></h1>
+    <p> <%= current_user.email %></p>
+    <p class="hidden-xs">points: <%= current_user.points %></p>
+    <p class="hidden-xs">doughnuts: <%= current_user.donuts %></p>
+  </div>
+<% end %>
