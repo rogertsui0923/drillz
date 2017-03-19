@@ -23,7 +23,6 @@ class UsersController < ApplicationController
       UsersMailer.notify_user_sign_up(@user).deliver_now!
       # session[:user_id] = @user.id
       # redirect_to root_path, notice: 'signed up'
-
       redirect_to user_path(:id)
     else
       render :new
