@@ -5,11 +5,11 @@
         <div class="large-profile">
           <%= image_tag("light_avatar.png", :class=>"avatar")%>
         </div>
-        <h2><%= current_user.first_name + ' ' + current_user.last_name %></h2>
+        <h2><%= @user.first_name + ' ' + @user.last_name %></h2>
         <div class="user-stats">
-          <p>obiwan@drillz.com</p>
-          <p>Points: 1000</p>
-          <p>Donuts: 10</p>
+          <p><%= @user.email %></p>
+          <p>Points: <%= @user.points %></p>
+          <p>Donuts: <%= @user.donuts %></p>
         </div>
         <div>
           <p class="edit-action"><%= link_to 'Edit', edit_user_path(current_user) %></p>
