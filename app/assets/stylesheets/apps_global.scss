@@ -14,7 +14,7 @@ body {
   background-color: $black;
 }
 
-h1, h2, h3, h4, h5, h6, p, a {
+h1, h2, h3, h4, h5, h6, p, a, td {
   font-family: $font-stack;
   color: $offwhite;
 }
@@ -24,6 +24,7 @@ h1, h2, h3, h4, h5, h6, p, a {
 label {
   color: $offwhite;
   font-weight: 100;
+  font-size: 1.5rem;
   letter-spacing: 0.75px;
 }
 
@@ -41,8 +42,7 @@ textarea.form-control {
   background-color: $green;
   border: none;
   font-weight: 100;
-}
-
-.btn-primary:hover {
-  background-color: darken($green, 22% )
+    &:hover {
+      background-color: darken($green, 22%);
+    }
 }
