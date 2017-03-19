@@ -1,0 +1,18 @@
+.answer-item {
+  padding-bottom: 20px;
+}
+
+p.answer-content {
+  float: left;
+  display: inline-block;
+  width: 90%;
+  padding-right: 5px;
+}
+
+.action-button {
+  background-color: goldenrod;
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 2px;
+  float: right;
+}
