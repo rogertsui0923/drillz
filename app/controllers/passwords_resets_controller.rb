@@ -20,4 +20,14 @@ class PasswordsResetsController < ApplicationController
       @user = User.find_by(email: params[:email].downcase)
     end
 
+    def update
+      # render json: params[:user][:email]
+          @user = User.find_by(email: params[:user][:email])
+          if @user.update(password: params[:user][:password])
+            redirect_to root_path(@user)
+          else
+            render :edit
+          end
+    end
+
 end

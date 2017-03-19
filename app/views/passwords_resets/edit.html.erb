@@ -1,5 +1,5 @@
 <h1>PasswordResets#edit</h1>
-<%= form_for @user do |f|%>
+<%= form_for @user, :url => { :controller => "passwords_resets", :action => "update"} do |f|%>
 
   <div class="field form-group">
     <%= f.label :first_name, class: 'control-label form-label' %>
