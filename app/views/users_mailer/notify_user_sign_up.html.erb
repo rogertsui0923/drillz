@@ -1,0 +1,15 @@
+
+<% @admins.each do |admin| %>
+  <p>Hello <%= admin.first_name %>,</p>
+  <p>A new user has signed up: </p>
+  <p>User name: <strong><%= @user.first_name  + ' ' + @user.last_name %></strong></p>
+  <p>User Email: <strong><%= @user.email %></strong></p>
+  <%= link_to 'Click Here to Approve the User', root_url %>
+
+                  <!-- reroute this to the admn panel -->
+
+<%# link to admin panel %>
+
+<p>Regards,</p>
+<p>GitHappens</p>
+<% end %>
