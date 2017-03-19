@@ -6,7 +6,7 @@ class SolutionsController < ApplicationController
     solution_params = params.require(:solution).permit(:body)
     @solutions = Solution.where("drill_id = ?", params[:drill_id])
     @solutions.each do |s|
-      if solution_params[:body].to_s == s.body
+      if solution_params[:body].to_s.gsub(/\s+/, "").downcase == s.body.to_s.gsub(/\s+/, "").downcase
         correct = true
       end
     end
