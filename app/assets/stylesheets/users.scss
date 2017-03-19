@@ -1,11 +1,20 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
 /* User Show */
+.user-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1.67em;
+    p {
+      margin-bottom: 1px;
+    }
+}
+
 .profile_picture {
-  max-width: 230px;
-  max-height: 230px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   overflow: hidden;
   background-color: $green;
@@ -48,43 +57,31 @@
   height: 100px;
 }
 
-/* Leaderboard */
-.leaderboard_title {
-  font-size: 60px;
+/* Edit*/
+.action-items {
+  display: flex;
+  justify-content: space-between;
 }
 
+/* Leaderboard */
 .small-doughnut {
-  width: 30px;
-  height: 30px;
+  width: 18px;
+  height: 18px;
+  margin-left: 7px;
 }
 
 /* Thank You for Signing Up */
+.notify-title {
+  text-align: center;
+  margin-top: 60px;
+}
+
 .flex-box {
   display: flex;
-  justify-content: center;
+  align-items: center;
 }
 
-.column-flex{
-  flex-direction: column;
-}
-
-.notify-title {
-  margin-top: 100px;
-  font-size: 60px;
-}
-
-.lightsaber {
-  width: 100%
-}
-
-@media only screen and (max-width: 480px) {
-  .lightsaber {
-    -webkit-transform: rotate(90deg) translate(150px, 1px);
-    -ms-transform: rotate(90deg) translate(150px, 1px);
-    transform: rotate(90deg) translate(150px, 1px);
-  }
-
-  .notify-title {
-    margin-top: 30px;
-  }
+.yoda-head {
+  height: 300px;
+  width: 300px;
 }

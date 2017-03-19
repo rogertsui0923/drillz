@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :edit, :update, :show] do
     get '/profile' => 'users#profile'
+    post '/password_change' => 'users#update_password'
   end
 
   # leaderboard could use user#index
@@ -22,6 +23,8 @@ Rails.application.routes.draw do
       resources :attempts, only: :create
     end
   end
+
+  resources :admin, only: [:index, :update]#, on: :collection
 
 
 end
