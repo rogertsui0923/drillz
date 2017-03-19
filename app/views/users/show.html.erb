@@ -1,12 +1,20 @@
-<div class="yoda-patience-text">
-  <div class="col-xs-12 flex-box">
-      <h2 class="notify-title">Patience you must have my young Padawan.</h2>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 text-center">
+      <div class="view-user-profile">
+        <div class="large-profile">
+          <%= image_tag("light_avatar.png", :class=>"avatar")%>
+        </div>
+        <h2><%= current_user.first_name + ' ' + current_user.last_name %></h2>
+        <div class="user-stats">
+          <p>obiwan@drillz.com</p>
+          <p>Points: 1000</p>
+          <p>Donuts: 10</p>
+        </div>
+        <div>
+          <p class="edit-action"><%= link_to 'Edit', edit_user_path(current_user) %></p>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="col-xs-12 flex-box">
-      <p>You will be notified when your account is approved.</p>
-  </div>
-</div>
-
-<div class="col-xs-12 flex-box">
-    <%= image_tag("yodahead.svg", :class=>"yoda-head")%>
 </div>
