@@ -1,7 +1,6 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
 /* User Show */
 .user-profile {
   display: flex;
@@ -72,32 +71,17 @@
 }
 
 /* Thank You for Signing Up */
+.notify-title {
+  text-align: center;
+  margin-top: 60px;
+}
+
 .flex-box {
   display: flex;
-  justify-content: center;
+  align-items: center;
 }
 
-.column-flex{
-  flex-direction: column;
-}
-
-.notify-title {
-  margin-top: 100px;
-  font-size: 60px;
-}
-
-.lightsaber {
-  width: 100%
-}
-
-@media only screen and (max-width: 480px) {
-  .lightsaber {
-    -webkit-transform: rotate(90deg) translate(150px, 1px);
-    -ms-transform: rotate(90deg) translate(150px, 1px);
-    transform: rotate(90deg) translate(150px, 1px);
-  }
-
-  .notify-title {
-    margin-top: 30px;
-  }
+.yoda-head {
+  height: 300px;
+  width: 300px;
 }
