@@ -4,10 +4,10 @@
 <%= simple_form_for @drill_group do |f| %>
   <%= f.input :name, required: false %>
   <%= f.input :description, required: false %>
-  <%= f.collection_radio_buttons :level,
-                                  [['beginner', 'Beginner'],
-                                  ['interediate', 'Interediate'],
-                                  ['advanced', 'Advanced']],
+  <%= f.collection_radio_buttons :level, [
+                                  ['beginner', 'Beginner'],
+                                  ['intermediate', 'Intermediate'],
+                                  ['advanced', 'Advanced'] ],
                                   :first,
                                   :last %>
   <%= f.input :points, required: false %>

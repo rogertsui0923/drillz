@@ -12,8 +12,7 @@ class DrillGroupsController < ApplicationController
   end
 
   def create
-    @drill_group      = DrillGroup.new
-    # @drill_group.user = current_user
+    @drill_group = DrillGroup.new drill_group_params
 
     if @drill_group.save
       redirect_to @drill_group, notice: 'Created New Drill Group!'
@@ -25,8 +24,10 @@ class DrillGroupsController < ApplicationController
   end
 
   def show
-    # @drill = Drill.new
-    # 3.times { solution = @drill.solutions.build }
+    @drills = @drill_group.drills
+    @drill = Drill.new
+    @solutions = @drill.solutions
+    1.times { solution = @drill.solutions.build }
   end
 
   def edit
@@ -36,6 +37,7 @@ class DrillGroupsController < ApplicationController
     if @drill_group.update drill_group_params
       redirect_to @drill_group, notice: 'Drill Group changed!'
     else
+      # 1.times { @drill_group.build }
       flash[:now] = 'Please fix the error below'
       render :edit
     end
