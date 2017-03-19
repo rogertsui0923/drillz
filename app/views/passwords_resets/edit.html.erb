@@ -1,0 +1,32 @@
+<h1>PasswordResets#edit</h1>
+<%= form_for @user, :url => { :controller => "passwords_resets", :action => "update"} do |f|%>
+
+  <div class="field form-group">
+    <%= f.label :first_name, class: 'control-label form-label' %>
+    <%= f.text_field :first_name, class: 'form-control form-input' %>
+
+  </div>
+
+  <div class = "field form-group ">
+    <%= f.label :last_name, class: 'control-label form-label' %>
+    <%= f.text_field :last_name, class: 'form-control form-input' %>
+  </div>
+
+  <div class = "field form-group ">
+    <%= f.label :email, class: 'control-label form-label' %>
+    <%= f.email_field :email, class: 'form-control form-input' %>
+  </div>
+
+  <div class = "field form-group ">
+    <%= f.label :new_password, class: ' control-label form-label' %>
+    <%= f.password_field :password, class: 'form-control form-input' %>
+  </div>
+
+
+  <div class = "field form-group ">
+    <%= f.label :password_confirmation, class: 'control-label form-label' %>
+    <%= f.password_field :password_confirmation, class: 'form-control form-input' %>
+  </div>
+
+  <%= f.submit class: 'btn'  %>
+<% end %>
