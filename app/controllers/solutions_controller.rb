@@ -11,6 +11,12 @@ class SolutionsController < ApplicationController
       end
     end
     if  correct
+      #Idea on implementing the point system
+      #get the current sign-in user id to obtain the drill_group_id from the GroupSession
+      #from the drill group get the base point and difficutly level
+      #Calculate the points in the based on difficulty and add it to the
+      #GroupSession's point
+      # We can add the calculated points when the user answers correctly here
       redirect_to drill_path(params[:drill_id]), notice: 'SUCCESS!'
     else
       redirect_to drill_path(params[:drill_id]), alert: 'Not Correct'
