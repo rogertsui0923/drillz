@@ -3,9 +3,19 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 /* User Show */
+.user-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1.67em;
+    p {
+      margin-bottom: 1px;
+    }
+}
+
 .profile_picture {
-  max-width: 230px;
-  max-height: 230px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   overflow: hidden;
   background-color: $green;
@@ -56,8 +66,9 @@
 
 /* Leaderboard */
 .small-doughnut {
-  width: 30px;
-  height: 30px;
+  width: 18px;
+  height: 18px;
+  margin-left: 7px;
 }
 
 /* Thank You for Signing Up */
