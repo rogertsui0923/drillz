@@ -2,46 +2,29 @@ class SolutionsController < ApplicationController
   before_action :find_solution , only: [:create, :destroy, :edit]
 
   # def create
-  #   @solution = Solution.new(solution_params)
-  #   @drill = Drill.find params[:drill_id]
-  #   @solution.drill = @solution
-  #   if @solution.save
-  #     redirect_to @drill_group
+  #   correct = false
+  #   solution_params = params.require(:solution).permit(:body)
+  #   @solutions = Solution.where("drill_id = ?", params[:drill_id])
+  #   @solutions.each do |s|
+  #     if solution_params[:body].to_s.gsub(/\s+/, "").downcase == s.body.to_s.gsub(/\s+/, "").downcase
+  #       correct = true
+  #     end
+  #   end
+  #   if  correct
+  #     #Idea on implementing the point system
+  #     #get the current sign-in user id to obtain the drill_group_id from the GroupSession
+  #     #from the drill group get the base point and difficutly level
+  #     #Calculate the points in the based on difficulty and add it to the
+  #     #GroupSession's point
+  #     # We can add the calculated points when the user answers correctly here
+  #     redirect_to drill_path(params[:drill_id]), notice: 'SUCCESS!'
   #   else
-  #     redirect_to @drill_group, alert: 'Fail to create solution'
+  #     redirect_to drill_path(params[:drill_id]), alert: 'Not Correct'
   #   end
   # end
 
-  # def destroy
-  #   if @solution.destroy
-  #     redirect_to @drill_group, notice: 'Solution is destroyed'
-  #   else
-  #     redirect_to @drill_group, alert: 'Cannot destroy solution'
-  #   end
+  # private
+  # def find_solution
+  #   @solution = Solution.find params[:drill_id]
   # end
-
-  def edit
-  end
-
-  # implement later
-  # def update
-  #   @drill_group = DrillGroup.find params[:drill_group_id]
-  #   @drill.drill_group  = @drill_group
-  #   @solution.drill = @drill
-  #   if @solution.update params[:form_field]
-  #     redirect_to @drill_group, notice: 'Update successful'
-  #   else
-  #     redirect_to @drill_group, alert: 'Update Failed'
-  #   end
-  # end
-
-  private
-
-  def find_solution
-    @solution = Solution.find params[:id]
-  end
-
-  def solution_params
-    solution_params = params.require(:solution).permit(:body)
-  end
 end

@@ -1,0 +1,54 @@
+.navbar-brand {
+  background: url('../images/logo.svg');
+  background-repeat: no-repeat;
+  width: 100px;
+  height: 60px;
+}
+
+.navbar-nav li {
+  padding-top: 0.75rem;
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+  border-color: $black;
+  border: none;
+}
+
+.navbar-default {
+  background-color: $black;
+  border: none;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: $offwhite;
+  background-color: $darkblack;
+  display: inline-block;
+  margin: 3px;
+  border-radius: 3px;
+    &:hover {
+      color: $green;
+      background-color: $darkblack;
+    }
+}
+
+.navbar-default .navbar-toggle {
+  margin-top: 18px;
+}
+
+.navbar-form .navbar-right {
+  border-bottom: none;
+}
+
+form.navbar-form.navbar-right {
+    display: none;
+}
+
+@media only screen and (max-width: 767px) {
+  .navbar-default .navbar-nav > li > a {
+    background-color: $black;
+    &:hover {
+      color: lighten($green, 15%);
+      background-color: $black;
+    }
+  }
+}

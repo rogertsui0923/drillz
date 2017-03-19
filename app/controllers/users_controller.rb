@@ -27,7 +27,6 @@ class UsersController < ApplicationController
       end
       # session[:user_id] = @user.id
       # redirect_to root_path, notice: 'signed up'
-
       redirect_to user_path(:id)
     else
       render :new
@@ -42,11 +41,11 @@ class UsersController < ApplicationController
     user_params = params.require(:user).permit(:first_name, :last_name, :email)
     @user = current_user
 
-    if @user.update(user_params)
-      redirect_to root_path(@user)
-    else
-      render :edit
-    end
+        if @user.update(user_params)
+          redirect_to root_path(@user)
+        else
+          render :edit
+        end
   end
 
   def update_password
@@ -70,6 +69,5 @@ class UsersController < ApplicationController
       render :edit
     end
   end
-
 
 end

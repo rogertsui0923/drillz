@@ -5,6 +5,14 @@ class DrillGroupsController < ApplicationController
 
   def index
     @drill_groups = DrillGroup.order created_at: :desc
+    @user         = current_user
+
+    if @user.is_admin?
+      render 'index_admin'
+    else
+      render 'index_user'
+    end
+
   end
 
   def new
@@ -13,14 +21,12 @@ class DrillGroupsController < ApplicationController
 
   def create
     @drill_group = DrillGroup.new drill_group_params
-
     if @drill_group.save
       redirect_to @drill_group, notice: 'Created New Drill Group!'
     else
       flash[:now] = 'Please fix the error below'
       render :new
     end
-
   end
 
   def show
