@@ -48,6 +48,12 @@
   height: 100px;
 }
 
+/* Edit*/
+.action-items {
+  display: flex;
+  justify-content: space-between;
+}
+
 /* Leaderboard */
 .small-doughnut {
   width: 30px;
@@ -79,7 +85,7 @@
     -ms-transform: rotate(90deg) translate(150px, 1px);
     transform: rotate(90deg) translate(150px, 1px);
   }
-  
+
   .notify-title {
     margin-top: 30px;
   }
