@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  def home
+
+  end
+
   def index
     # @users = Users.all
     @users = User.order(points: :desc, donuts: :desc).limit(20)
@@ -43,7 +47,7 @@ class UsersController < ApplicationController
     @user = current_user
 
         if @user.update(user_params)
-          redirect_to root_path(@user)
+          redirect_to user_path(@user)
         else
           render :edit
         end
