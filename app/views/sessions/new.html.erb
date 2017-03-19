@@ -1,24 +1,27 @@
-<div class ="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-  <h1>Log In<h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class ="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+      <h1>Log In<h1>
 
+      <div class="form-group">
+      <%= form_tag sessions_path do %>
+          <div class = "field form-group ">
+            <%= label_tag :email, 'Email', class: 'control-label form-label' %>
+            <%= email_field_tag 'email', nil, class: 'form-control form-input' %>
+          </div>
 
-  <%= form_tag sessions_path do %>
+          <div class = "field form-group ">
+            <%= label_tag :password, 'Password', class: ' control-label form-label' %>
+            <%= password_field_tag 'password', nil, class: 'form-control form-input' %>
+          </div>
 
-    <div class = "field form-group ">
-      <%= label_tag :email, 'Email', class: 'control-label form-label' %>
-      <%= email_field_tag 'email', nil, class: 'form-control form-input' %>
+          <%= submit_tag 'Submit', class: 'btn'  %>
+        <% end %>
+      </div>
+
+      <h2>Forgot password<h2>
+      <%#= link_to 'Forgot password?', # path %>
+      <%= link_to 'Don\'t have an account? Sign Up', new_user_path %>
     </div>
-
-    <div class = "field form-group ">
-      <%= label_tag :password, 'Password', class: ' control-label form-label' %>
-      <%= password_field_tag 'password', nil, class: 'form-control form-input' %>
-    </div>
-
-    <%= submit_tag 'Submit', class: 'btn'  %>
-  <% end %>
-
-  <h2>Forgot password<h2>
-  <%#= link_to 'Forgot password?', # path %>
-  <%= link_to 'Don\'t have an account? Sign Up', new_user_path %>
-
+  </div>
 </div>
