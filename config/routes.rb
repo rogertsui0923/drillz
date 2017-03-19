@@ -13,15 +13,14 @@ Rails.application.routes.draw do
     post '/password_change' => 'users#update_password'
   end
 
-
   # leaderboard could use user#index
   # the profile link on the wireframe could direct to user#show
   resources :sessions, only: [:new, :create, :destroy]
 
   resources :drill_groups, shallow: true do
-    resources :drills, only: [:create, :update, :destroy, :edit, :show] do
-      resources :solutions#, only: [
-      resources :attempts
+    resources :group_sessions, only: [:create, :show]
+    resources :drills, except: [:new, :index] do
+      resources :attempts, only: :create
     end
   end
 
