@@ -1,5 +1,5 @@
 class DrillsController < ApplicationController
-  before_action :find_drill , only: [:destroy, :update, :edit]
+  before_action :find_drill , only: [:destroy, :update, :edit, :show]
 
   def create
     @drill = Drill.new(drill_params)
@@ -9,6 +9,16 @@ class DrillsController < ApplicationController
       redirect_to @drill_group
     else
       redirect_to @drill_group, notice: 'Fail to create Drill'
+    end
+  end
+
+  def show
+    if @drill.next
+      # redirect back to the next drill show page
+      redirect_to drill_path(@drill)
+    else
+      # There are no more drills
+      # redirect back to result page
     end
   end
 
