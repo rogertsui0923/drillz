@@ -1,0 +1,26 @@
+.navbar-brand {
+  background: url('../images/logo.svg');
+  background-repeat: no-repeat;
+  width: 100px;
+  height: 60px;
+}
+
+.navbar-nav li {
+  padding-top: 0.75rem;
+}
+
+.navbar-default {
+  background-color: $black;
+  border: none;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: $offwhite;
+    &:hover {
+      color: lighten($green, 15%);
+    }
+}
+
+.navbar-default .navbar-toggle {
+  margin-top: 20px;
+}

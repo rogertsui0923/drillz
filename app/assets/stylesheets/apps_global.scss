@@ -1,0 +1,48 @@
+/* Font styling */
+$font-stack: 'Lato', sans-serif;
+
+/* Colors */
+$black: #3c3c3b;
+$darkblack: #333333;
+$white: #ffffff;
+$offwhite: #dcdcdc;
+$pink: #ad9289;
+$green: #abc373;
+$gold: goldenrod;
+
+body {
+  background-color: $black;
+}
+
+h1, h2, h3, h4, h5, h6, p, a {
+  font-family: $font-stack;
+  color: $offwhite;
+}
+
+/* Form Styling */
+
+label {
+  color: $offwhite;
+  font-weight: 100;
+  letter-spacing: 0.75px;
+}
+
+input {
+  color: $black;
+}
+
+textarea.form-control {
+  background-color: #333;
+  border: 1px solid #222;
+  color: $offwhite;
+}
+
+.btn-primary {
+  background-color: $green;
+  border: none;
+  font-weight: 100;
+}
+
+.btn-primary:hover {
+  background-color: darken($green, 22% )
+}
