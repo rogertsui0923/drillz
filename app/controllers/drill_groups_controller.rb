@@ -5,6 +5,14 @@ class DrillGroupsController < ApplicationController
 
   def index
     @drill_groups = DrillGroup.order created_at: :desc
+    @user         = current_user
+
+    if @user.is_admin?
+      render 'index_admin'
+    else
+      render 'index_user'
+    end
+
   end
 
   def new
