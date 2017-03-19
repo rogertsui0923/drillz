@@ -23,5 +23,6 @@ class User < ApplicationRecord
     self.points ||= 0
     self.donuts ||= 0
     self.is_admin ||= false
+    self.is_approved ||= false
   end
 end
