@@ -5,9 +5,6 @@ class GroupSessionsController < ApplicationController
       if groupSession.save
         redirect_to drill_path(groupSession.drill_group.drills.first)
       else
-        # redirect_to
       end
   end
-
-
 end
