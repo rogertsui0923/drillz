@@ -92,6 +92,7 @@
 
 /* Edit*/
 .action-items {
+  margin-top: 9px;
   display: flex;
   justify-content: space-between;
 }
@@ -117,4 +118,10 @@
 .yoda-head {
   height: 300px;
   width: 300px;
+}
+
+@media only screen and (max-width: 480px) {
+  .user-profile {
+    padding-bottom: 20px;
+  }
 }
