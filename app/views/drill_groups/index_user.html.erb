@@ -15,13 +15,13 @@
         <div role="tabpanel" class="tab-pane active" id="my-drills">
           <div class="tab-text">
 
-            <%# if @user.favourite_drill_groups %>
               <% @user.favourite_drill_groups.each do |drill_group| %>
                 <div class="drills-box left-col">
                   <h4><%= drill_group.name %></h4>
-                  <%= link_to 'Start' %>
-                  <%= link_to 'Remove',
+                  <%= button_to 'Start', nil, class: 'btn btn-primary' %>
+                  <%= button_to 'Remove',
                       favourite_path(drill_group.find_favourite_by_user(@user)),
+                      class: 'btn btn-primary',
                       method: :delete %>
                 </div>
               <% end %>
@@ -34,9 +34,18 @@
             <% @drill_groups.each do |drill_group| %>
               <div class="drills-box left-col">
                 <h4><%= drill_group.name %></h4>
-                <p><%= button_to 'Add To My Drills',
-                       favourites_path({drill_group_id: drill_group.id}),
-                       class: 'btn btn-primary' %></p>
+
+                <% if drill_group.find_favourite_by_user(@user) %>
+                  <%= button_to 'Added',
+                      favourite_path(drill_group.find_favourite_by_user(@user)),
+                      class: 'btn btn-primary',
+                      method: :delete %>
+                <% else %>
+                  <%= button_to 'Add To My Drills',
+                      favourites_path({drill_group_id: drill_group.id}),
+                      class: 'btn btn-primary' %>
+                <% end %>
+
               </div>
             <% end %>
 
