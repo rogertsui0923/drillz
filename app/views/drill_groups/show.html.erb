@@ -23,19 +23,18 @@
       <!-- Drill List -->
       <% if @drills.present? %>
         <% @drills.each do |drill| %>
+
           <div class="drill">
             <p class="bottom-drill-description"><%= drill.description %></p>
               <%# 👇 need to change after implementing SlideDown thing %>
             <div class="drill-group-actions">
-              <div id="slide" class="drill-button toggle-button"><a>Edit</a></div>
+              <%= link_to 'Edit', '#', class: 'drill-button toggle-button slide' %>
               <%= link_to 'Delete', drill_path(drill), method: :delete, class: 'drill-button' %>
             </div>
-              <div id='show-form' class="edit-form">
-              <%# 👇 this form will slide down when 'Edit' button clicked %>
-              <%# if true %>
-                <%= render partial: 'edit_drill_form', locals: {drill: drill} %>
-              <%# end %>
-              </div>
+            <div class="show-form">
+            <%# 👇 this form will slide down when 'Edit' button clicked %>
+              <%= render partial: 'edit_drill_form', locals: {drill: drill} %>
+            </div>
           </div>
         <% end %>
       <% end %>
