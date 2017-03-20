@@ -22,7 +22,7 @@
               <%# 👇 need to change after implementing SlideDown thing %>
             <div class="drill-group-actions">
               <div id="slide" class="drill-button toggle-button"><a>Edit</a></div>
-              <%= link_to 'Delete', nil, method: :delete, class: 'drill-button' %>
+              <%= link_to 'Delete', drill_path(drill), method: :delete, class: 'drill-button' %>
             </div>
               <div id='show-form' class="edit-form">
               <%# 👇 this form will slide down when 'Edit' button clicked %>
