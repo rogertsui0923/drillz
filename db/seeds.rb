@@ -6,12 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-leader = User.new(first_name: 'Basia', last_name: 'C', email: 'basia@c.com', password: 'secret', is_admin: true)
+leader = User.new(first_name: 'Basia', last_name: 'C', email: 'basia@c.com', password: 'secret', is_admin: true, is_approved: true)
 leader.save
-User.create(first_name: 'Kira', last_name: 'G', email: 'kira@g.com', password: 'secret', is_admin: true)
-User.create(first_name: 'Nari', last_name: 'R', email: 'nari@r.com', password: 'secret', is_admin: true)
-User.create(first_name: 'Mitchell', last_name: 'W', email: 'mitchell@w.com', password: 'secret')
-User.create(first_name: 'Fernando', last_name: 'H', email: 'fernando@h.com', password: 'secret')
+User.create(first_name: 'Kira', last_name: 'G', email: 'kira@g.com', password: 'secret', is_admin: true, is_approved: true)
+User.create(first_name: 'Nari', last_name: 'R', email: 'nari@r.com', password: 'secret', is_admin: true, is_approved: true)
+User.create(first_name: 'Mitchell', last_name: 'W', email: 'mitchell@w.com', password: 'secret', is_approved: true)
+User.create(first_name: 'Fernando', last_name: 'H', email: 'fernando@h.com', password: 'secret', is_approved: true)
 User.create(first_name: 'Alan', last_name: 'L', email: 'alan@l.com', password: 'secret')
 User.create(first_name: 'Roger', last_name: 'T', email: 'roger@t.com', password: 'secret')
 
