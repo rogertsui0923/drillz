@@ -1,27 +1,38 @@
-<h1>When Drill session is done....</h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+      <h1>Completed the group, you did.</h1>
 
-<h3>You scored: <%= @group_session.points %> / <%= @drill_group.points %></h3>
-<h2>Total Donuts 🍩 <%= current_user.donuts %></h2>
-
-<!-- List of drills -->
-
-<% drill_counter = 0 %>
-<% @group_session.attempts.each do |attempt| %>
-  <% drill = attempt.drill %>
-  <div class="drill">
-    <h3><%= "Drill #{drill_counter += 1}: #{drill.description}" %></h3>
-      <p>Your Answer: <%= attempt.body %></p>
-      <div class="btn btn-primary">
-      <%= attempt.success ? 'Correct' : 'Incorrect' %>
-    </div>
-    <div class="drill-solutions">
-      <div class="show-solutions">
-        <h4>Solutions</h4>
-        <% drill.solutions.each do |solution| %>
-        <p><%= solution.body %></p>
-        <% end %>
+      <div class="user-result">
+        <h4>You scored: <%= @group_session.points %> / <%= @drill_group.points * @drill_group.drills.count %></h4>
+        <h4>Total donuts: <%= current_user.donuts %><% if current_user.donuts > 0 %> <%= image_tag('doughnut.png', :class=>'small-doughnut')%> <% end %></h4>
       </div>
-      <button class="btn btn-primary solutions">Solutions</button>
+
+      <!-- List of drills -->
+      <% drill_counter = 0 %>
+      <% @group_session.attempts.each do |attempt| %>
+        <% drill = attempt.drill %>
+        <div class="drill">
+          <h3 class="drill-title-list"><%= "Drill #{drill_counter += 1}: #{drill.description}" %></h3>
+            <p>Your Answer: <%= attempt.body %></p>
+          <div class="overall-results">
+            <div class="drill-result">
+              <div class="drill-result-boolean">
+                <span class="result-boolean"><%= attempt.success ? 'Correct' : 'Incorrect' %></span>
+              </div>
+            </div>
+            <div class="drill-solutions">
+              <div class="show-solutions">
+                <h4>Solutions</h4>
+                <% drill.solutions.each do |solution| %>
+                <p><%= solution.body %></p>
+                <% end %>
+              </div>
+              <span class="solutions-result">Solutions</span>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
-<% end %>
+</div>
