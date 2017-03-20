@@ -19,11 +19,11 @@
     <ul class="nav navbar-nav">
       <li><%= link_to 'Drillz', drill_groups_path %></li>
       <li><%= link_to 'Leaderboard', users_path %></li>
+      <li><%#=  %></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <% if user_signed_in? %>
         <li><%= link_to current_user.first_name + ' ' + current_user.last_name, user_path(current_user) %></li>
-        <!-- edit_user_path -->
         <li><%= link_to 'Sign Out', session_path(current_user), method: :delete %></li>
       <% else %>
         <li><%= link_to 'Sign Up', new_user_path %></li>

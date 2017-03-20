@@ -11,7 +11,7 @@ class DrillsController < ApplicationController
     if @drill.save
       redirect_to @drill_group
     else
-      redirect_to @drill_group, notice: 'Fail to create Drill'
+      redirect_to @drill_group, error: 'Fail to create Drill'
     end
   end
 
@@ -25,9 +25,9 @@ class DrillsController < ApplicationController
     @drill_group = @drill.drill_group
 
     if @drill.update drill_params
-      redirect_to @drill_group, notice: 'Update successful'
+      redirect_to @drill_group, success: 'Update successful'
     else
-      redirect_to @drill_group, notice: 'Update Failed'
+      redirect_to @drill_group, error: 'Update Failed'
     end
   end
 
@@ -38,7 +38,7 @@ class DrillsController < ApplicationController
     if @drill.destroy
       redirect_to @drill.drill_group, notice: 'Drill is destroyed'
     else
-      redirect_to @drill.drill_group, notice: 'Cannot destroy View'
+      redirect_to @drill.drill_group, alert: 'Cannot destroy View'
     end
   end
 

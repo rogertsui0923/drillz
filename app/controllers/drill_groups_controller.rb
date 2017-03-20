@@ -23,9 +23,9 @@ class DrillGroupsController < ApplicationController
     @drill_group = DrillGroup.new drill_group_params
 
     if @drill_group.save
-      redirect_to @drill_group, notice: 'Created New Drill Group!'
+      redirect_to @drill_group, success: 'Created New Drill Group!'
     else
-      flash[:now] = 'Please fix the error below'
+      flash.now[:error] = 'Please fix the error below'
       render :new
     end
   end
@@ -44,7 +44,7 @@ class DrillGroupsController < ApplicationController
     if @drill_group.update drill_group_params
       redirect_to @drill_group, notice: 'Drill Group changed!'
     else
-      flash[:now] = 'Please fix the error below'
+      flash.now[:error] = 'Please fix the error below'
       render :edit
     end
   end
