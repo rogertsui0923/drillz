@@ -4,26 +4,25 @@
       <h1><%= @drill.drill_group.name %></h1>
         <h3 class="single-drill-description">Q: <%= @drill.description %></h3>
 
-      <label>Enter answer</label>
       <% if !flash[:submitted] %>
+        <label>Enter answer</label>
         <%= simple_form_for [@drill, @attempt],
             url: drill_attempts_path(@drill),
             method: :post,
             html: { class: 'answer-form' } do |f| %>
            <%= f.input :body, label: false, input_html: {class: 'form-group'} %>
-           <%= f.submit :submit, class: 'btn btn-primary answer-submit' %>
+           <%= f.submit :submit, value: 'Submit', class: 'btn btn-primary answer-submit' %>
         <% end %>
-      <% else  %>
-        <%= @attempt.body %>
-      <% end %>
 
-      <% if flash[:submitted] %>
+      <%# elsif flash[:submitted] %>
+      <% else %>
+      <p><%#= @submitted_attempt.body %></p>
         <% if @drill.next.nil? %>
         <%= button_to 'Done!', group_session_path(@group_session),
                                method: :get,
                                class: 'btn btn-primary' %>
         <% else %>
-        <%= button_to 'NEXT DRILL', drill_path(@drill.next),
+        <%= button_to 'Next Drill', drill_path(@drill.next),
                                     method: :get,
                                     class: 'btn btn-primary' %>
         <% end %>
