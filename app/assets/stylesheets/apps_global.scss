@@ -20,11 +20,13 @@ h1, h2, h3, h4, h5, h6, p, a, td, th {
 }
 
 a {
+  color: $green;
   font-size: 15px;
 }
+
 a:hover {
   text-decoration: none;
-  color: $green;
+  color: darken($green, 20%);
 }
 
 /* Form Styling */

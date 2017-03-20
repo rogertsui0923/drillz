@@ -1,7 +1,7 @@
 class DrillGroupsController < ApplicationController
-  # before_action :authenticate_user! # for everything?
+  before_action :authenticate_user!
   before_action :find_drill_group, except: [:index, :new, :create]
-  # before_action :authorize, except: [:index, :show]
+  before_action :authorize, except: [:index]
 
   def index
     @drill_groups = DrillGroup.order created_at: :desc
@@ -21,6 +21,7 @@ class DrillGroupsController < ApplicationController
 
   def create
     @drill_group = DrillGroup.new drill_group_params
+
     if @drill_group.save
       redirect_to @drill_group, notice: 'Created New Drill Group!'
     else
@@ -43,7 +44,6 @@ class DrillGroupsController < ApplicationController
     if @drill_group.update drill_group_params
       redirect_to @drill_group, notice: 'Drill Group changed!'
     else
-      # 1.times { @drill_group.build }
       flash[:now] = 'Please fix the error below'
       render :edit
     end
@@ -69,7 +69,7 @@ class DrillGroupsController < ApplicationController
 
   def authorize
     if cannot?(:manage, @drill_group)
-      redirect_to root_path, alert: 'Not authorized.'
+      redirect_to root_path, alert: 'Not authorized'
     end
   end
 end

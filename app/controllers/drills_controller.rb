@@ -1,10 +1,13 @@
 class DrillsController < ApplicationController
-  before_action :find_drill , only: [:destroy, :update, :edit, :show]
+  before_action :authenticate_user!
+  before_action :find_drill, only: [:destroy, :update, :edit, :show]
+  before_action :authorize, except: [:show]
 
   def create
     @drill = Drill.new(drill_params)
     @drill_group = DrillGroup.find params[:drill_group_id]
     @drill.drill_group = @drill_group
+
     if @drill.save
       redirect_to @drill_group
     else
@@ -14,17 +17,13 @@ class DrillsController < ApplicationController
 
   def show
     @solution = Solution.new
-  end
-
-  def attempts
-    #id of the current drill
-    #user pressed the next drill button
-    #Find the group session for the current drill
-    #call the show page
+    @group_session = GroupSession.find_by(user: current_user,
+                                          drill_group: @drill.drill_group_id)
   end
 
   def update
     @drill_group = @drill.drill_group
+
     if @drill.update drill_params
       redirect_to @drill_group, notice: 'Update successful'
     else
@@ -33,9 +32,6 @@ class DrillsController < ApplicationController
   end
 
   def edit
-    # @drill_group
-    # @drill_group = DrillGroup.find params[:drill_group_id]
-    # @drill.drill_group = @drill_group
   end
 
   def destroy
@@ -47,15 +43,22 @@ class DrillsController < ApplicationController
   end
 
   private
+
   def find_drill
     @drill = Drill.find params[:id]
   end
 
   def drill_params
     drill_params = params.require(:drill).permit(:description,
-                                                  {solutions_attributes:
+                                                  { solutions_attributes:
                                                     [:id,
                                                      :body,
                                                      :_destroy] })
+  end
+
+  def authorize
+    if cannot?(:manage, @drill)
+      redirect_to root_path, alert: 'Not authorized'
+    end
   end
 end
