@@ -1,14 +1,21 @@
 <!-- index view for admin -->
+<div class="container-fluid"> <!-- Main post container -->
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+      <%= link_to 'Add Group', new_drill_group_path %>
 
-<%= link_to 'Add Group', new_drill_group_path %>
-
-<h1>Drill Groups</h1>
-
-  <% @drill_groups.each do |drill_group| %>
-    <div>
-      <%= drill_group.name %>
-      <%= link_to 'View', drill_group %>
-      <%= link_to 'Edit', edit_drill_group_path(drill_group) %>
-      <%= link_to 'Delete', drill_group, method: :delete %>
+      <h1>Drill Groups</h1>
+      <% @drill_groups.each do |drill_group| %>
+          <div class="drill-group-item">
+            <h3><%= drill_group.name %></h3>
+            <p class="drill-group-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <div class="drill-group-actions">
+              <div class="action-button"><%= link_to 'View', drill_group %></div>
+              <div class="action-button"><%= link_to 'Edit', edit_drill_group_path(drill_group) %></div>
+              <div class="action-button"><%= link_to 'Delete', drill_group, method: :delete %></div>
+            </div>
+        </div>
+      <% end %>
     </div>
-  <% end %>
+  </div>
+</div>
