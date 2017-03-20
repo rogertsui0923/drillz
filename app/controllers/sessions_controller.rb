@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
       if @user&.authenticate params[:password]
         if @user.is_approved?
           session[:user_id] = @user.id
-          redirect_to drill_groups_path, notice: 'Signed in!'
+          redirect_to drill_groups_path
         else
           redirect_to root_path, alert: 'Your account hasn\'t been authenticated yet'
         end
@@ -20,6 +20,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    redirect_to root_path, notice: 'Signed out!'
+    redirect_to root_path
   end
 end

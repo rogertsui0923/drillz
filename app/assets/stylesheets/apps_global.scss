@@ -46,6 +46,10 @@ input {
   color: $black;
 }
 
+input.btn.btn-primary {
+  letter-spacing: 0.1em;
+}
+
 .form-control {
   background-color: #333;
   border: 1px solid #222;
