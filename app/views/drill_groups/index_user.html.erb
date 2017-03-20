@@ -1,9 +1,7 @@
-<!-- index view for normal user -->
-
 <div class="container-fluid"> <!-- Main post container -->
   <div class="row">
     <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-      <h1>Drill Groups Index</h1>
+      <h1>Drills</h1>
 
     <!-- Drills tabs -->
     <div class="drill-tabs">
@@ -14,52 +12,54 @@
       <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="my-drills">
           <div class="tab-text">
-
-            <% if !@user.favourite_drill_groups.present? %>
-              <p class="my-drill-text">Proceed to all drills to start coding: May the force be with you</p>
-            <% else %>
-              <% @user.favourite_drill_groups.each do |drill_group| %>
-                <div class="drills-box left-col">
-                  <h4><%= drill_group.name %></h4>
-                  <%= button_to 'Start',
-                      drill_group_group_sessions_path(drill_group.id),
-                      class: 'btn btn-primary' %>
-
-                  <%= button_to 'Remove',
-                      favourite_path(drill_group.find_favourite_by_user(@user)),
-                      class: 'btn btn-primary',
-                      method: :delete %>
-                </div>
+              <% if !@user.favourite_drill_groups.present? %>
+                <p class="my-drill-text">Proceed to all drills to start coding: May the force be with you</p>
+              <% else %>
+                <% @user.favourite_drill_groups.each do |drill_group| %>
+                  <div class="drills-box left-col">
+                    <h4><%= drill_group.name %></h4>
+                    <div class="my-drill-buttons">
+                      <div class="start-coding">
+                        <%= button_to 'Start',
+                            drill_group_group_sessions_path(drill_group.id),
+                            class: 'btn btn-primary' %>
+                      </div>
+                      <div class="remove-coding">
+                        <%= button_to 'Remove',
+                            favourite_path(drill_group.find_favourite_by_user(@user)),
+                            class: 'btn btn-primary',
+                            method: :delete %>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
               <% end %>
-            <% end %>
-
+            </div>
           </div>
-        </div>
-        <div role="tabpanel" class="tab-pane" id="all-drills">
-          <div class="tab-text">
-
+          <div role="tabpanel" class="tab-pane" id="all-drills">
+            <div class="tab-text">
             <% @drill_groups.each do |drill_group| %>
               <div class="drills-box left-col">
                 <h4><%= drill_group.name %></h4>
-
-                <% if drill_group.find_favourite_by_user(@user) %>
-                  <%= button_to 'Added',
-                      favourite_path(drill_group.find_favourite_by_user(@user)),
-                      class: 'btn btn-primary',
-                      method: :delete %>
-                <% else %>
-                  <%= button_to 'Add To My Drills',
-                      favourites_path({drill_group_id: drill_group.id}),
-                      class: 'btn btn-primary' %>
-                <% end %>
-
-              </div>
-            <% end %>
-
+                  <% if drill_group.find_favourite_by_user(@user) %>
+                  <div class="position-button">
+                      <%= button_to 'Added',
+                          favourite_path(drill_group.find_favourite_by_user(@user)),
+                          class: 'btn btn-primary',
+                          method: :delete %>
+                    <% else %>
+                    <div class="position-button">
+                      <%= button_to 'Add To My Drills',
+                          favourites_path({drill_group_id: drill_group.id}),
+                          class: 'btn btn-primary' %>
+                    <% end %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 </div>
