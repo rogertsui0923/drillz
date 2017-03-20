@@ -69,7 +69,7 @@ class DrillGroupsController < ApplicationController
 
   def authorize
     if cannot?(:manage, @drill_group)
-      redirect_to root_path, alert: 'Not authorized'
+      redirect_to drill_groups_path, alert: 'Not authorized'
     end
   end
 end
