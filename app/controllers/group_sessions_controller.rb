@@ -12,7 +12,7 @@ class GroupSessionsController < ApplicationController
   def show
     @group_session = GroupSession.find params[:id]
     @drill_group   = @group_session.drill_group
-    @drils         = @drill_group.drills 
+    @drills        = @drill_group.drills 
   end
 
 end
