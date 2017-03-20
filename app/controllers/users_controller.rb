@@ -30,9 +30,10 @@ class UsersController < ApplicationController
       @admins.each do |admin|
         UsersMailer.notify_user_sign_up(@user, admin).deliver_now!
       end
+
       # session[:user_id] = @user.id
       # redirect_to root_path, notice: 'signed up'
-      redirect_to signup_users_path
+      redirect_to signup_users_path, success: 'May the force be with you!'
     else
       render :new
     end
@@ -45,8 +46,9 @@ class UsersController < ApplicationController
   def update
     user_params = params.require(:user).permit(:first_name, :last_name, :email)
     @user = current_user
+
     if @user.update(user_params)
-      redirect_to user_path(@user), notice: 'Account updated!'
+      redirect_to user_path(@user), success: 'Successfully Updated!'
     else
       render :edit
     end
@@ -65,9 +67,9 @@ class UsersController < ApplicationController
       @user.errors.add(:password, 'should be different from old password')
       render :edit
     elsif @user.update user_params
-      redirect_to edit_user_path(@user), notice: 'Password updated!'
+      redirect_to edit_user_path(@user), success: 'Password updated!'
     else
-      flash.now[:alert] = 'Please fix errors!'
+      flash.now[:error] = 'Please fix errors!'
       flash[:modal] = true
       render :edit
     end
