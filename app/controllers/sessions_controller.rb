@@ -9,11 +9,11 @@ class SessionsController < ApplicationController
           session[:user_id] = @user.id
           redirect_to drill_groups_path, notice: 'Signed in!'
         else
-          redirect_to root_path, notice: 'Your account hasn\'t been authenticated yet'
+          redirect_to root_path, alert: 'Your account hasn\'t been authenticated yet'
         end
 
       else
-        flash[:now] = 'Wrong credentials'
+        flash[:error] = 'Wrong credentials'
         render :new
       end
   end

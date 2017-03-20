@@ -29,7 +29,7 @@ class AttemptsController < ApplicationController
       @attempt.save
       @group_session.points =  @group_session.points +  @group_session.drill_group.points
       @group_session.save
-      redirect_to drill_path(params[:drill_id]), notice: 'SUCCESS!'
+      redirect_to drill_path(params[:drill_id]), success: 'SUCCESS!'
      else
       @attempt.body = solution_params[:body]
       @attempt.save
