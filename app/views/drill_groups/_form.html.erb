@@ -9,4 +9,5 @@
                                   :last %>
   <%= f.input :points, required: false %>
   <%= f.submit 'Save', class: 'btn btn-primary' %>
+  <%= link_to 'Cancel', 'javascript:history.go(-1);', class: 'btn btn-primary' %>
 <% end %>
