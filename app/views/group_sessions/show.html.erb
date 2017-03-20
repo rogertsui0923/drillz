@@ -5,13 +5,14 @@
 
 <!-- List of drills -->
 
-</div>
 <%= drill_counter = 0 %>
-<% @drils.each do |drill| %>
+<% @drills.each do |drill| %>
   <div class="drill">
     <h3><%= "Drill #{drill_counter += 1}: #{drill.description}" %></h3>
     <div class="something looks like button? help me team front-end!">
-      <%= drill.attempts.success ? 'Correct' : 'Incorrect' %>
+      <% @group_session.attempts.each do |attempt| %>
+        <%= attempt.success ? 'Correct' : 'Incorrect' %>
+      <% end %>
     </div>
     <div class="drill-solutions">
       <div class="show-solutions">
