@@ -30,7 +30,7 @@ class AttemptsController < ApplicationController
 
       flash[:submitted] = true
       @user = User.find(current_user.id)
-      @user.points = @user.points + @group_session.points
+      @user.points = @user.points + @group_session.drill_group.points
       @user.save
       redirect_to drill_path(params[:drill_id]), success: 'SUCCESS!'
     else
