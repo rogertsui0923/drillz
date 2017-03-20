@@ -21,10 +21,10 @@
     </div>
 
     <div class="col-xs-12 col-sm-3 user-profile">
-      <div class="profile-picture">
-        <%= image_tag("light_avatar.png", :class=>"avatar")%>
-      </div>
       <% if user_signed_in? %>
+        <div class="profile-picture">
+          <%= image_tag("light_avatar.png", :class=>"avatar")%>
+        </div>
         <div class="user-profile-stats">
           <h2><%= current_user.first_name %></h2>
           <p><%= current_user.email %></p>
