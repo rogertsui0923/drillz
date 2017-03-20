@@ -15,12 +15,15 @@ class AttemptsController < ApplicationController
     end
     if  correct
       @attempt.success = true
+      @attempt.body = solution_params[:body]
       @attempt.save
       @groupSession.points =  @groupSession.points +  @groupSession.drill_group.points
       @groupSession.save
       redirect_to drill_path(params[:drill_id]), notice: 'SUCCESS!'
      else
-       redirect_to drill_path(params[:drill_id]), alert: 'Not Correct'
+      @attempt.body = solution_params[:body]
+      @attempt.save
+      redirect_to drill_path(params[:drill_id]), alert: 'Not Correct'
      end
   end
 
@@ -28,5 +31,4 @@ class AttemptsController < ApplicationController
   def find_solution
     @solution = Solution.find params[:drill_id]
   end
-
 end
