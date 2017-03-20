@@ -1,18 +1,23 @@
 class UsersController < ApplicationController
+  def home
+
+  end
+
   def index
     # @users = Users.all
-    @users = User.order(points: :desc, donuts: :desc)
+    @users = User.order(points: :desc, donuts: :desc).limit(20)
   end
 
   def show
-    #thanks for signing up!
+    @user = current_user
   end
 
   def new
     @user = User.new
   end
 
-  def profile
+  def signup
+    # thanks for signing up
   end
 
   def create
@@ -20,10 +25,14 @@ class UsersController < ApplicationController
     @user = User.new user_params
 
     if @user.save
-      UsersMailer.notify_user_sign_up(@user).deliver_now!
+      @admins = User.where(is_admin: true)
+
+      @admins.each do |admin|
+        UsersMailer.notify_user_sign_up(@user, admin).deliver_now!
+      end
       # session[:user_id] = @user.id
       # redirect_to root_path, notice: 'signed up'
-      redirect_to user_path(:id)
+      redirect_to signup_users_path
     else
       render :new
     end
@@ -38,7 +47,7 @@ class UsersController < ApplicationController
     @user = current_user
 
         if @user.update(user_params)
-          redirect_to root_path(@user)
+          redirect_to user_path(@user)
         else
           render :edit
         end
@@ -65,6 +74,5 @@ class UsersController < ApplicationController
     end
 
   end
-
 
 end

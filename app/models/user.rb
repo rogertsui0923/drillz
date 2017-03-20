@@ -61,7 +61,6 @@ class User < ApplicationRecord
 
   private
 
-
   def set_defaults
     self.points ||= 0
     self.donuts ||= 0

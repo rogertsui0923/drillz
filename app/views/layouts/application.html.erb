@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Drillz</title>
+    <title>Code Core Drillz | May the Force be with You</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
 
+    <%#= Google Font %>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+
   </head>
 
   <body>
+    <%= render "layouts/nav" %>
     <%= yield %>
   </body>
 </html>
