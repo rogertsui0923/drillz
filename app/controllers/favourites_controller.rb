@@ -19,7 +19,7 @@ class FavouritesController < ApplicationController
     if @favourite.destroy
       redirect_to drill_groups_path, notice: 'Drillzzzz Removed!'
     else
-      flash[:now] = 'Something is wrong...'
+      flash.now[:error] = 'Something is wrong...'
       render 'drill_groups/index_user'
     end
   end

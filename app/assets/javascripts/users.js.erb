@@ -3,10 +3,27 @@ $( document ).ready(function() {
     $(this).next().toggle(1000)
   })
 
-  $('.password_field').on('keyup', function({currentTarget}){
+  $('.password-field').on('keyup', function({currentTarget}){
     const passwordVal = currentTarget.value;
     let passwordStrength = calculatePassStrength(passwordVal)
-    $($('#form-message')[0]).html(passwordStrength);
+
+    if (passwordStrength === 0) {
+      $('.lightsaber').attr("src", "<%= image_path "saberHandle.svg"%>");
+      $('.password-status').html("")
+    } else if (passwordStrength === 1) {
+      $('.lightsaber').attr("src", "<%= image_path "smallSaber.svg"%>");
+      let status = 'Weak';
+      $('.password-status').html(status)
+    } else if (passwordStrength === 2){
+      $('.lightsaber').attr("src", "<%= image_path "mediumSaber.svg"%>");
+      let status = 'Medium';
+      $('.password-status').html(status)
+    } else if (passwordStrength === 3) {
+      $('.lightsaber').attr("src", "<%= image_path "bigSaber.svg"%>");
+      let status = 'Strong';
+      $('.password-status').html(status)
+    }
+
   })
 
 })

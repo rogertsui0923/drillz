@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
       <h1>Create an Account<h1>
-      <%= @user.errors.full_messages.join(', ') %>
+      <p><%= @user.errors.full_messages.join(', ') %></p>
       <div class="form-group">
         <%= form_for @user do |f|%>
         <div>
@@ -19,7 +19,11 @@
         </div>
         <div>
           <%= f.label :password %>
-          <%= f.password_field :password, class: 'form-control' %>
+          <%= f.password_field :password, class: 'form-control password-field' %>
+        </div>
+        <div class="password-strength">
+          <%= image_tag("saberHandle.svg", :class=>"lightsaber")%>
+          <span class="password-status"></span>
         </div>
         <div>
           <%= f.label :password_confirmation %>
