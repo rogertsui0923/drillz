@@ -2,3 +2,18 @@
 
 <h3>You scored: <%= @group_session.points %> / <%= @drill_group.points %></h3>
 <h2>Total Donuts 🍩 <%= current_user.donuts %></h2>
+
+<!-- List of drills -->
+<% @drils.each do |drill| %>
+  <%= drill_counter = 0 %>
+  <h3><%= "Drill #{drill_counter += 1}" %></h3>
+  <h3>Description</h3>
+  <p><%= drill.description %></p>
+  <div class="something looks like button? help me team front-end!">
+    <%= drill.attempts.success ? 'Correct' : 'Incorrect' %>
+  </div>
+  <h3>Solutions</h3>
+  <% drill.solutions.each do |solution| %>
+    <p><%= solution %></p>
+  <% end %>
+<% end %>
