@@ -46,6 +46,7 @@ class UsersController < ApplicationController
   def update
     user_params = params.require(:user).permit(:first_name, :last_name, :email)
     @user = current_user
+
     if @user.update(user_params)
       redirect_to user_path(@user), success: 'Successfully Updated!'
     else
