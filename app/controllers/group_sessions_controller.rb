@@ -1,4 +1,6 @@
 class GroupSessionsController < ApplicationController
+  before_action :authenticate_user!
+  
   def create
     group_session = GroupSession.new(user: current_user,
                                      drill_group_id: params[:drill_group_id])

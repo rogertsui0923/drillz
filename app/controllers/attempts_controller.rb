@@ -1,4 +1,5 @@
 class AttemptsController < ApplicationController
+  before_action :authenticate_user!
   # before_action :find_solution, only: :create
 
   def create
