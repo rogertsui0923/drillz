@@ -16,8 +16,8 @@ class DrillsController < ApplicationController
   end
 
   def show
-    @solution = Solution.new
-    @group_session = GroupSession.find_by(user: current_user,
+    @attempt = Attempt.new
+    @group_session = GroupSession.order(id: :desc).find_by(user: current_user,
                                           drill_group: @drill.drill_group_id)
   end
 
@@ -36,7 +36,7 @@ class DrillsController < ApplicationController
 
   def destroy
     if @drill.destroy
-      redirect_to @drill.drill_group, notice: 'Drill is destroyed'
+      redirect_to @drill.drill_group, notice: 'Drill is deleted'
     else
       redirect_to @drill.drill_group, alert: 'Cannot destroy View'
     end

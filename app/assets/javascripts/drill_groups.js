@@ -1,6 +1,6 @@
 $(document).ready(function() {
-  $('#show-form').hide();
-  $('#slide').on('click', function(){
-    $('#show-form').slideToggle()
+  $('.show-form').hide();
+  $(document).on('click', '.drill .slide', function() {
+    $(this).closest('.drill').find('.show-form').slideToggle();
   });
 });
