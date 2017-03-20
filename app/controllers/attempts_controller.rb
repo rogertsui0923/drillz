@@ -5,7 +5,6 @@ class AttemptsController < ApplicationController
   def create
     correct = false
     solution_params = params.require(:solution).permit(:body)
-
     @drill = Drill.find(params[:drill_id])
     @group_session = GroupSession.find_by(user: current_user,
                                           drill_group: @drill.drill_group_id)
@@ -13,23 +12,12 @@ class AttemptsController < ApplicationController
                               group_session: @group_session,
                               drill: @drill)
     @solutions = Solution.where("drill_id = ?", params[:drill_id])
-
     @solutions.each do |s|
-<<<<<<< HEAD
       reg = Regexp.new('^'+Regexp.escape(solution_params[:body].to_s.gsub(/\s+/, "").downcase)+'$')
       if reg.match(s.body.to_s.gsub(/\s+/, "").downcase)
         correct = true
       end
-=======
-     if solution_params[:body].to_s.gsub(/\s+/, "")
-                              .downcase == s.body.to_s
-                              .gsub(/\s+/, "")
-                              .downcase
-      correct = true
-     end
->>>>>>> integration
     end
-
     if correct
       @attempt.success = true
       @attempt.body = solution_params[:body]
