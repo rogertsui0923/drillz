@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
         end
 
       else
-        flash[:error] = 'Wrong credentials'
+        flash.now[:error] = 'Wrong credentials'
         render :new
       end
   end
