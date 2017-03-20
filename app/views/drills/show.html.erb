@@ -1,25 +1,22 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-      <h1>Drill Group: <%= @drill.drill_group.name %></h1>
-        <h3>Q : <%= @drill.description %></h3>
+      <h1><%= @drill.drill_group.name %></h1>
+        <h3 class="single-drill-description">Q: <%= @drill.description %></h3>
 
       <% if !flash[:submitted] %>
-        <h4>Type your answer</h4>
+        <label>Enter answer</label>
         <%= simple_form_for [@drill, @attempt],
             url: drill_attempts_path(@drill),
             method: :post,
             html: { class: 'answer-form' } do |f| %>
            <%= f.input :body, label: false, input_html: {class: 'form-group'} %>
-           <%= f.submit :submit, value: 'Submit', class: 'btn btn-primary' %>
+           <%= f.submit :submit, value: 'Submit', class: 'btn btn-primary answer-submit' %>
         <% end %>
-      <% else  %>
-        <%= @attempt.body %>
-      <% end %>
-      <hr>
 
-
-      <% if flash[:submitted] %>
+      <%# elsif flash[:submitted] %>
+      <% else %>
+      <p><%#= @submitted_attempt.body %></p>
         <% if @drill.next.nil? %>
         <%= button_to 'Done!', group_session_path(@group_session),
                                method: :get,
@@ -30,7 +27,7 @@
                                     class: 'btn btn-primary' %>
         <% end %>
 
-        <div class="solution">
+        <div class="solution-render">
           <h3>Solutions</h3>
           <ul>
             <% @drill.solutions.each do |s| %>
