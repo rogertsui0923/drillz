@@ -80,3 +80,56 @@ a.toggle-button, a.drill-button {
 }
 
 /* Drill Group Index - User */
+.left-col {
+  display: inline-block;
+  float: left;
+}
+
+.tab-text {
+  margin-top: 20px;
+}
+
+.drills-box {
+  background-color: $darkblack;
+  width: 100%;
+  height: 30vh;
+  margin: 0 5px;
+  margin-bottom: 20px;
+  padding-left: 10px;
+  position: relative;
+}
+
+.my-drill-buttons {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+}
+
+.start-coding {
+  padding-right: 10px;
+}
+
+.position-button {
+  position: absolute;
+  bottom: 0;
+}
+
+.nav-tabs {
+  border-bottom: 1px solid #333;
+    li a:hover {
+      background-color: $black;
+      border: 1px solid #333;
+      color: $offwhite; 
+    }
+}
+
+.nav-tabs > li.active > a {
+  background-color: $black;
+  border: 1px solid $darkblack;
+  color: $offwhite;
+    &:hover {
+      background-color: $black;
+      border: 1px solid $darkblack;
+      color: $green;
+    }
+}
