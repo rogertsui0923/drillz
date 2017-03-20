@@ -15,12 +15,19 @@ class AttemptsController < ApplicationController
     @solutions = Solution.where("drill_id = ?", params[:drill_id])
 
     @solutions.each do |s|
+<<<<<<< HEAD
+      reg = Regexp.new('^'+Regexp.escape(solution_params[:body].to_s.gsub(/\s+/, "").downcase)+'$')
+      if reg.match(s.body.to_s.gsub(/\s+/, "").downcase)
+        correct = true
+      end
+=======
      if solution_params[:body].to_s.gsub(/\s+/, "")
                               .downcase == s.body.to_s
                               .gsub(/\s+/, "")
                               .downcase
       correct = true
      end
+>>>>>>> integration
     end
 
     if correct
