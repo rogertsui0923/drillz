@@ -16,7 +16,7 @@ class DrillsController < ApplicationController
   end
 
   def show
-    @solution = Solution.new
+    @attempt = Attempt.new
     @group_session = GroupSession.find_by(user: current_user,
                                           drill_group: @drill.drill_group_id)
   end

@@ -2,44 +2,43 @@
   <div class="row">
     <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
       <h1>Drill Group: <%= @drill.drill_group.name %></h1>
-        <p><%= @drill.drill_group.description %></p>
-    </div>
-  </div>
-</div>
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-      <h3>Answers</h3>
-      <%= simple_form_for [@drill,@solution],
+        <h3>Q : <%= @drill.description %></h3>
+
+      <h4>Type your answer</h4>
+      <%= simple_form_for [@drill, @attempt],
           url: drill_attempts_path(@drill),
           method: :post,
           html: { class: 'answer-form' } do |f| %>
-         <%= f.input :body, input_html: {class: 'form-group'} %>
-         <%= f.submit :submit, class: 'btn btn-primary' %>
+         <%= f.input :body, label: false, input_html: {class: 'form-group'} %>
+
+         <% if !flash[:submitted] %>
+           <%= f.submit :submit, class: 'btn btn-primary' %>
+         <% end %>
+
       <% end %>
-    </div>
-  </div>
-</div>
-<hr>
+      <hr>
 
-<% if @drill.next.nil? %>
-  <%= button_to 'Done!', group_session_path(@group_session),
-                         method: :get,
-                         class: 'btn btn-primary' %>
-<% else %>
-  <%= button_to 'NEXT DRILL', drill_path(@drill.next),
-                              method: :get,
-                              class: 'btn btn-primary' %>
-<% end %>
 
-<div class="container-fluid"> <!-- Main post container -->
-  <div class="row">
-    <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-      <p class="success-message"><%= alert || notice %></p>
-      <% @drill.solutions.each do |s| %>
-      <div class="submitted-answer">
-        <p> <%= s.body %></p>
-      </div>
+      <% if flash[:submitted] %>
+        <% if @drill.next.nil? %>
+        <%= button_to 'Done!', group_session_path(@group_session),
+                               method: :get,
+                               class: 'btn btn-primary' %>
+        <% else %>
+        <%= button_to 'NEXT DRILL', drill_path(@drill.next),
+                                    method: :get,
+                                    class: 'btn btn-primary' %>
+        <% end %>
+
+        <div class="solution">
+          <h3>Solutions</h3>
+          <ul>
+            <% @drill.solutions.each do |s| %>
+              <li><%= s.body %></li>
+            <% end %>
+          </ul>
+        </div>
+
       <% end %>
     </div>
   </div>
