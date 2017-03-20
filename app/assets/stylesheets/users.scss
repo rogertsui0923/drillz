@@ -152,13 +152,14 @@
   background-color: #3c3c3b;
   border-top: 1px solid #444;
 }
-//avatar choose
+
+//Choose Side
 .lightside {
-  background-color:#dcdcdc;
+  background-color:$offwhite;
   height: 100vh;
 }
 .darkside {
-  background-color: #3c3c3b;
+  background-color: $black;
   height: 100vh;
 }
 @media screen  and (max-width: 765px){
@@ -171,10 +172,29 @@
   height: 300px;
   border-radius: 50%;
   overflow: hidden;
-  background-color: #abc373;
+  background-color: $green;
   padding: 10px;
   padding-bottom: 15px;
   text-align: center;
   margin-top: 40px;
   margin-bottom: 40px;
+}
+.hovered-avatar {
+  background-color: darken($green, 22%)
+}
+.center-text {
+  padding-bottom: 40px;
+  margin-top: 40px;
+  text-align: center;
+}
+.center-text > a {
+  font-size: 40px;
+}
+.light-link > a {
+  color: $black;
+
+}
+.dark-link > a {
+  color: $offwhite;
+
 }
