@@ -9,12 +9,8 @@
         <span class="icon-bar"></span>
       </button>
 
+      <a style="background-image: url(<%= image_path("logo.png") %>);" class="navbar-brand" href="/drill_groups"></a>
 
-      <% if current_user&.is_admin? %>
-        <a style="background-image: url(<%= image_path("logo.png") %>);" class="navbar-brand" href="/drill_groups"></a>
-      <% else %>
-        <a style="background-image: url(<%= image_path("logo.png") %>);" class="navbar-brand" href="/drill_groups"></a>     
-       <% end %>
     </div>
 
 
