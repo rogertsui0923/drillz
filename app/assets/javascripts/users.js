@@ -3,7 +3,7 @@ $( document ).ready(function() {
     $(this).next().toggle(1000)
   })
 
-  $('.password_field').on('keyup', function({currentTarget}){
+  $('.password-field').on('keyup', function({currentTarget}){
     const passwordVal = currentTarget.value;
     let passwordStrength = calculatePassStrength(passwordVal)
     $($('#form-message')[0]).html(passwordStrength);

@@ -19,15 +19,16 @@
         </div>
         <div>
           <%= f.label :password %>
-          <%= f.password_field :password, class: 'form-control' %>
+          <%= f.password_field :password, class: 'form-control password-field' %>
         </div>
+        <%= image_tag("saberHandle.svg", :class=>"lightsaber")%>
         <div>
           <%= f.label :password_confirmation %>
           <%= f.password_field :password_confirmation, class: 'form-control' %>
         </div>
         <%= f.submit class: 'btn btn-primary'  %>
       <%end%>
-
+      <p id="form-message">Form Message</p>
       </div>
     </div>
   </div>
