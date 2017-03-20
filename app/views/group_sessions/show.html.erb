@@ -9,12 +9,12 @@
       </div>
 
       <!-- List of drills -->
-
       <% drill_counter = 0 %>
       <% @group_session.attempts.each do |attempt| %>
         <% drill = attempt.drill %>
         <div class="drill">
           <h3 class="drill-title-list"><%= "Drill #{drill_counter += 1}: #{drill.description}" %></h3>
+            <p>Your Answer: <%= attempt.body %></p>
           <div class="overall-results">
             <div class="drill-result">
               <div class="drill-result-boolean">

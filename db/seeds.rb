@@ -15,7 +15,7 @@ User.create(first_name: 'Fernando', last_name: 'H', email: 'fernando@h.com', pas
 User.create(first_name: 'Alan', last_name: 'L', email: 'alan@l.com', password: 'secret')
 User.create(first_name: 'Roger', last_name: 'T', email: 'roger@t.com', password: 'secret')
 
-ruby_hash = DrillGroup.new(name: 'Ruby Hashes', description: 'Drills involving Ruby hashes', level: 'easy', points: 100)
+ruby_hash = DrillGroup.new(name: 'Ruby Hashes', description: 'Drills involving Ruby hashes', level: 'beginner', points: 100)
 js_string = DrillGroup.create(name: 'Javascript Strings', description: 'Drills involving Javascript strings', level: 'difficult', points: 400)
 ruby_hash.save
 js_string.save
