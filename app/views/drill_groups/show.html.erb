@@ -1,38 +1,39 @@
-<!-- drill group -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+      <h1><%= @drill_group.name %></h1>
 
-<h1>Drill Group: <%= @drill_group.name %></h1>
-
-
-<%= button_to 'Edit Group', edit_drill_group_path(@drill_group),
+      <%= button_to 'Edit Group', edit_drill_group_path(@drill_group),
                             method: :get,
                             class: 'btn btn-primary' %>
 
-<h3><%= @drill_group.description %></h3>
+      <p class="drill-description"><%= @drill_group.description %></p>
 
-<hr>
-
-<!-- drill form -->
-<div>
-  <h2>Add New Drill</h2>
-    <h4>Drill Description</h4>
-    <%= render partial: 'drill_form', locals: {drill: @drill} %>
-</div>
-<hr>
-
-<!-- drill list -->
-<% if @drills.present? %>
-  <% @drills.each do |drill| %>
-    <div class="drill">
-      <h3><%= drill.description %></h3>
-        <%# 👇 need to change after implementing SlideDown thing %>
-      <button id='slide' class="btn btn-primary">Edit</button>
-      <%= button_to 'Delete', nil, method: :delete, class: 'btn btn-primary' %>
-        <div id='show-form' class="edit-form">
-        <%# 👇 this form will slide down when 'Edit' button clicked %>
-        <%# if true %>
-          <%= render partial: 'edit_drill_form', locals: {drill: drill} %>
-        <%# end %>
-        </div>
+      <!-- Drill Form -->
+      <div>
+        <h2>Add New Drill</h2>
+          <label>Drill Description</label>
+          <%= render partial: 'drill_form', locals: {drill: @drill} %>
+      </div>
+      <!-- Drill List -->
+      <% if @drills.present? %>
+        <% @drills.each do |drill| %>
+          <div class="drill">
+            <p class="bottom-drill-description"><%= drill.description %></p>
+              <%# 👇 need to change after implementing SlideDown thing %>
+            <div class="drill-group-actions">
+              <div id="slide" class="drill-button toggle-button"><a>Edit</a></div>
+              <%= link_to 'Delete', nil, method: :delete, class: 'drill-button' %>
+            </div>
+              <div id='show-form' class="edit-form">
+              <%# 👇 this form will slide down when 'Edit' button clicked %>
+              <%# if true %>
+                <%= render partial: 'edit_drill_form', locals: {drill: drill} %>
+              <%# end %>
+              </div>
+          </div>
+        <% end %>
+      <% end %>
     </div>
-  <% end %>
-<% end %>
+  </div>
+</div>
