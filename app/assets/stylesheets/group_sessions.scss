@@ -22,6 +22,7 @@
 .result-boolean {
   font-style: italic;
   margin-right: 10px;
+  margin-left: 10px;
 }
 
 .result-boolean, .solutions-result {
@@ -29,4 +30,8 @@
   padding: 5px;
   border-radius: 2px;
   font-family: $font-stack;
+}
+
+.show-solutions {
+  margin-top: 30px;
 }

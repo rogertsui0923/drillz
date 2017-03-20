@@ -16,19 +16,21 @@
           <h3 class="drill-title-list"><%= "Drill #{drill_counter += 1}: #{drill.description}" %></h3>
             <p>Your Answer: <%= attempt.body %></p>
           <div class="overall-results">
-            <div class="drill-result">
-              <div class="drill-result-boolean">
-                <span class="result-boolean"><%= attempt.success ? 'Correct' : 'Incorrect' %></span>
-              </div>
-            </div>
             <div class="drill-solutions">
+              <span class="solutions-result">Solutions</span>
               <div class="show-solutions">
                 <h4>Solutions</h4>
                 <% drill.solutions.each do |solution| %>
                 <p><%= solution.body %></p>
                 <% end %>
               </div>
-              <span class="solutions-result">Solutions</span>
+            </div>
+            <div class="drill-result">
+              <div class="drill-result-boolean">
+                <span class="result-boolean">
+                  <%= attempt.success ? 'Correct' : 'Incorrect' %>
+                </span>
+              </div>
             </div>
           </div>
         </div>
