@@ -1,25 +1,41 @@
 class AttemptsController < ApplicationController
-  before_action :find_solution, except: [:index, :create]
+  before_action :authenticate_user!
+  # before_action :find_solution, only: :create
 
   def create
     correct = false
     solution_params = params.require(:solution).permit(:body)
+
     @drill = Drill.find(params[:drill_id])
-    @groupSession = GroupSession.find_by(user: current_user, drill_group: @drill.drill_group_id)
-    @attempt = Attempt.create(user: current_user , group_session: @groupSession, drill: @drill)
+    @group_session = GroupSession.find_by(user: current_user,
+                                          drill_group: @drill.drill_group_id)
+    @attempt = Attempt.create(user: current_user,
+                              group_session: @group_session,
+                              drill: @drill)
     @solutions = Solution.where("drill_id = ?", params[:drill_id])
+
     @solutions.each do |s|
+<<<<<<< HEAD
       reg = Regexp.new('^'+Regexp.escape(solution_params[:body].to_s.gsub(/\s+/, "").downcase)+'$')
       if reg.match(s.body.to_s.gsub(/\s+/, "").downcase)
         correct = true
       end
+=======
+     if solution_params[:body].to_s.gsub(/\s+/, "")
+                              .downcase == s.body.to_s
+                              .gsub(/\s+/, "")
+                              .downcase
+      correct = true
+     end
+>>>>>>> integration
     end
-    if  correct
+
+    if correct
       @attempt.success = true
       @attempt.body = solution_params[:body]
       @attempt.save
-      @groupSession.points =  @groupSession.points +  @groupSession.drill_group.points
-      @groupSession.save
+      @group_session.points =  @group_session.points +  @group_session.drill_group.points
+      @group_session.save
       redirect_to drill_path(params[:drill_id]), notice: 'SUCCESS!'
      else
       @attempt.body = solution_params[:body]

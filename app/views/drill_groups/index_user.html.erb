@@ -18,7 +18,10 @@
               <% @user.favourite_drill_groups.each do |drill_group| %>
                 <div class="drills-box left-col">
                   <h4><%= drill_group.name %></h4>
-                  <%= button_to 'Start', nil, class: 'btn btn-primary' %>
+                  <%= button_to 'Start',
+                      drill_group_group_sessions_path(drill_group.id),
+                      class: 'btn btn-primary' %>
+
                   <%= button_to 'Remove',
                       favourite_path(drill_group.find_favourite_by_user(@user)),
                       class: 'btn btn-primary',

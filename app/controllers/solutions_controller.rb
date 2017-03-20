@@ -1,5 +1,5 @@
 class SolutionsController < ApplicationController
-  before_action :find_solution , only: [:create, :destroy, :edit]
+  # before_action :find_solution , only: [:create, :destroy, :edit]
 
   # def create
   #   correct = false
