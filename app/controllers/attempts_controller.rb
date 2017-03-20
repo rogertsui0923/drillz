@@ -30,6 +30,7 @@ class AttemptsController < ApplicationController
       @attempt.save
       redirect_to drill_path(params[:drill_id]), alert: 'Not Correct'
      end
+
   end
 
   private
