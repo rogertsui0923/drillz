@@ -9,9 +9,10 @@ class AttemptsController < ApplicationController
     @attempt = Attempt.create(user: current_user , group_session: @groupSession, drill: @drill)
     @solutions = Solution.where("drill_id = ?", params[:drill_id])
     @solutions.each do |s|
-     if solution_params[:body].to_s.gsub(/\s+/, "").downcase == s.body.to_s.gsub(/\s+/, "").downcase
-      correct = true
-     end
+      reg = Regexp.new('^'+Regexp.escape(solution_params[:body].to_s.gsub(/\s+/, "").downcase)+'$')
+      if reg.match(s.body.to_s.gsub(/\s+/, "").downcase)
+        correct = true
+      end
     end
     if  correct
       @attempt.success = true
