@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  def home
+
+  end
+
   def index
     # @users = Users.all
     @users = User.order(points: :desc, donuts: :desc).limit(20)

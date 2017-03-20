@@ -1,3 +1,4 @@
+/* Nav Logo */
 .navbar-brand {
   background: url('../images/logo.svg');
   background-repeat: no-repeat;
@@ -44,6 +45,11 @@ form.navbar-form.navbar-right {
 }
 
 @media only screen and (max-width: 767px) {
+  .navbar-header {
+    border-bottom: 1px solid #444;
+    padding-bottom: 3px;
+  }
+
   .navbar-default .navbar-nav > li > a {
     background-color: $black;
     &:hover {
