@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-/* Drill Group Index */
+/* Drill Group Index - Admin */
 .drill-group-item {
   border-bottom: 2px solid #444;
   padding-bottom: 15px;
@@ -15,9 +15,10 @@
 .drill-group-actions {
   display: flex;
   justify-content: flex-end;
+  padding-bottom: 10px;
 }
 
-.action-button {
+.action-button, .drill-button {
   padding: 5px;
   border-radius: 2px;
   background-color: goldenrod;
@@ -34,3 +35,46 @@
 }
 
 /* Drill Group Show - Single */
+.drill-group-actbuttons {
+  display: flex;
+}
+
+.btn.btn-primary.actbutton:first-child {
+  margin-right: 10px;
+}
+
+.drill-button.toggle-button {
+  margin-right: 10px;
+}
+
+a.toggle-button, a.drill-button {
+  color: $darkblack;
+    &:hover {
+      color: $offwhite;
+    }
+}
+
+.drill-description {
+  font-size: 1.5rem;
+  margin-top: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid #444;
+}
+
+.bottom-drill-description {
+  font-size: 1.5rem;
+}
+
+.drill {
+  padding-top: 30px;
+  border-top: 2px solid #444;
+  // border-bottom: 2px solid #444;
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.save-drill-button {
+  margin-top: 7px;
+  padding-bottom: 15px;
+}

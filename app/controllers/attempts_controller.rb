@@ -1,6 +1,5 @@
 class AttemptsController < ApplicationController
   before_action :authenticate_user!
-  # before_action :find_solution, only: :create
 
   def create
     correct = false
@@ -14,23 +13,19 @@ class AttemptsController < ApplicationController
     @solutions = Solution.where("drill_id = ?", params[:drill_id])
     @solutions.each do |s|
       reg = Regexp.new('^'+Regexp.escape(solution_params[:body].to_s.gsub(/\s+/, "").downcase)+'$')
-
       if reg.match(s.body.to_s.gsub(/\s+/, "").downcase)
         correct = true
       end
-
     end
-
     if correct
       @attempt.success = true
       @attempt.body = solution_params[:body]
       @attempt.save
       @group_session.points =  @group_session.points +  @group_session.drill_group.points
       @group_session.save
-
       flash[:submitted] = true
       @user = User.find(current_user.id)
-      @user.points = @group_session.points
+      @user.points = @user.points + @group_session.drill_group.points
       @user.save
       redirect_to drill_path(params[:drill_id]), success: 'SUCCESS!'
     else
@@ -39,11 +34,5 @@ class AttemptsController < ApplicationController
       flash[:submitted] = true
       redirect_to drill_path(params[:drill_id]), alert: 'Not Correct'
     end
-
-  end
-
-  private
-  def find_solution
-    @solution = Solution.find params[:drill_id]
   end
 end
