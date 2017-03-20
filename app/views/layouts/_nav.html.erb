@@ -19,7 +19,9 @@
     <ul class="nav navbar-nav">
       <li><%= link_to 'Drillz', drill_groups_path %></li>
       <li><%= link_to 'Leaderboard', users_path %></li>
-      <li><%#=  %></li>
+      <% if @user&.is_admin? %>
+        <li><%= link_to 'Users', admin_index_path  %></li>
+      <% end %>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <% if user_signed_in? %>
