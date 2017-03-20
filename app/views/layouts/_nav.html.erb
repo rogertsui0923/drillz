@@ -19,8 +19,10 @@
     <form class="navbar-form navbar-right">
     </form>
     <ul class="nav navbar-nav">
-      <li><%= link_to 'Drillz', drill_groups_path %></li>
-      <li><%= link_to 'Leaderboard', users_path %></li>
+      <% if user_signed_in? %>
+        <li><%= link_to 'Drillz', drill_groups_path %></li>
+        <li><%= link_to 'Leaderboard', users_path %></li>
+      <% end %>
       <% if current_user&.is_admin? %>
         <li><%= link_to 'Users', admin_index_path  %></li>
       <% end %>

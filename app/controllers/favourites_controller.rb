@@ -1,6 +1,5 @@
 class FavouritesController < ApplicationController
   before_action :authenticate_user!
-  before_action :authorize
 
   def create
     @drill_group = DrillGroup.find params[:drill_group_id]

@@ -23,13 +23,21 @@
     <div class="col-xs-12 col-sm-3 user-profile">
       <% if user_signed_in? %>
         <div class="profile-picture">
-          <%= image_tag("light_avatar.png", :class=>"avatar")%>
+          <% if current_user.is_admin?  %>
+            <%= image_tag("chewie.png", :class=>"avatar")%>
+          <% else %>
+            <%= image_tag("light_avatar.png", :class=>"avatar")%>
+          <% end %>
         </div>
         <div class="user-profile-stats">
           <h2><%= current_user.first_name %></h2>
           <p><%= current_user.email %></p>
-          <p>Points: <%= current_user.points %></p>
-          <p>Donuts: <%= current_user.donuts %></p>
+          <p>Points: <%= current_user.points %>
+          <p>Donuts: <%= current_user.donuts %>
+            <% if current_user.donuts > 0 %>
+              <%= image_tag('doughnut.png', :class=>'small-doughnut')%>
+            <% end %>
+          </p>
         </div>
       <% end %>
     </div>

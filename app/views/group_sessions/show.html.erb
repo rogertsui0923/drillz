@@ -4,16 +4,24 @@
 <h2>Total Donuts 🍩 <%= current_user.donuts %></h2>
 
 <!-- List of drills -->
-<% @drils.each do |drill| %>
-  <%= drill_counter = 0 %>
-  <h3><%= "Drill #{drill_counter += 1}" %></h3>
-  <h3>Description</h3>
-  <p><%= drill.description %></p>
-  <div class="something looks like button? help me team front-end!">
-    <%= drill.attempts.success ? 'Correct' : 'Incorrect' %>
+
+<%= drill_counter = 0 %>
+<% @drills.each do |drill| %>
+  <div class="drill">
+    <h3><%= "Drill #{drill_counter += 1}: #{drill.description}" %></h3>
+    <div class="something looks like button? help me team front-end!">
+      <% @group_session.attempts.each do |attempt| %>
+        <%= attempt.success ? 'Correct' : 'Incorrect' %>
+      <% end %>
+    </div>
+    <div class="drill-solutions">
+      <div class="show-solutions">
+        <h4>Solutions</h4>
+        <% drill.solutions.each do |solution| %>
+        <p><%= solution.body %></p>
+        <% end %>
+      </div>
+      <button class="btn btn-primary solutions">Solutions</button>
+    </div>
   </div>
-  <h3>Solutions</h3>
-  <% drill.solutions.each do |solution| %>
-    <p><%= solution %></p>
-  <% end %>
 <% end %>

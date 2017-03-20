@@ -15,6 +15,9 @@
         <div role="tabpanel" class="tab-pane active" id="my-drills">
           <div class="tab-text">
 
+            <% if !@user.favourite_drill_groups.present? %>
+              <p class="my-drill-text">Proceed to all drills to start coding: May the force be with you</p>
+            <% else %>
               <% @user.favourite_drill_groups.each do |drill_group| %>
                 <div class="drills-box left-col">
                   <h4><%= drill_group.name %></h4>
@@ -28,6 +31,7 @@
                       method: :delete %>
                 </div>
               <% end %>
+            <% end %>
 
           </div>
         </div>
