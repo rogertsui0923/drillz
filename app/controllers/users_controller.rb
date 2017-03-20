@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def home
-
+    @user = current_user
   end
 
   def index
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
 
       # session[:user_id] = @user.id
       # redirect_to root_path, notice: 'signed up'
-      redirect_to signup_users_path, success: 'May the force be with you!'
+      redirect_to signup_users_path, alert: 'May the force be with you!'
     else
       render :new
     end
@@ -48,7 +48,7 @@ class UsersController < ApplicationController
     @user = current_user
 
     if @user.update(user_params)
-      redirect_to user_path(@user), success: 'Successfully Updated!'
+      redirect_to user_path(@user), alert: 'Successfully Updated!'
     else
       render :edit
     end
@@ -67,7 +67,7 @@ class UsersController < ApplicationController
       @user.errors.add(:password, 'should be different from old password')
       render :edit
     elsif @user.update user_params
-      redirect_to edit_user_path(@user), success: 'Password updated!'
+      redirect_to edit_user_path(@user), alert: 'Password updated!'
     else
       flash.now[:error] = 'Please fix errors!'
       flash[:modal] = true

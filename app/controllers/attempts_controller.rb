@@ -6,8 +6,8 @@ class AttemptsController < ApplicationController
     correct = false
     solution_params = params.require(:attempt).permit(:body)
     @drill = Drill.find(params[:drill_id])
-    @group_session = GroupSession.find_by(user: current_user,
-                                          drill_group: @drill.drill_group_id)
+    @group_session = GroupSession.order(id: :desc).find_by(user: current_user,
+                                          drill_group: @drill.drill_group)
     @attempt = Attempt.create(user: current_user,
                               group_session: @group_session,
                               drill: @drill)
@@ -27,14 +27,18 @@ class AttemptsController < ApplicationController
       @attempt.save
       @group_session.points =  @group_session.points +  @group_session.drill_group.points
       @group_session.save
+
       flash[:submitted] = true
+      @user = User.find(current_user.id)
+      @user.points = @group_session.points
+      @user.save
       redirect_to drill_path(params[:drill_id]), success: 'SUCCESS!'
-     else
+    else
       @attempt.body = solution_params[:body]
       @attempt.save
       flash[:submitted] = true
       redirect_to drill_path(params[:drill_id]), alert: 'Not Correct'
-     end
+    end
 
   end
 

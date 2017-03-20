@@ -1,34 +1,38 @@
 <div class="container">
 
-  <h1>admin page</h1>
+  <h1>Admin Dashboard</h1>
+  <table class="table">
+    <thead>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Created</th>
+      <th></th>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+      <tr>
+        <td>
+          <%= user.first_name %>
+        </div>
+        <td>
+           <%=user.last_name %>
+        </td>
+        <td>
+          Created: <%= user.created_at.strftime("%B %d, %Y") %>
+        </td>
+        <td>
+          <% if !user.is_approved %>
+            <%= form_tag admin_path(current_user), method: :put do -%>
+              <%= hidden_field_tag :is_approved, user.id -%>
+              <%= submit_tag 'Pending', :class=>('btn btn-primary btn-approve')-%>
+            <%- end -%>
+          <% end %>
+        </td>
+    </tr>
 
-  <% @users.each do |user| %>
-  <div>
-    First Name: <%= user.first_name %>
-  </div>
-  <div>
-    Last Name: <%= user.last_name %>
-  </div>
-  <div>
-    Points: <%= user.points %>
-  </div>
-  <div>
-    Donuts: <%= user.donuts %>
-  </div>
-  <div>
-    Created: <%= user.created_at.strftime("%B %d, %Y") %>
-  </div>
-  <br>
-
-  <% if !user.is_approved %>
-    <%= form_tag admin_path(current_user), method: :put do -%>
-      <%= hidden_field_tag :is_approved, user.id -%>
-      <%= submit_tag 'Add User' -%>
-    <%- end -%>
-  <% end %>
-
-    <hr>
-  <% end %>
+      <% end %>
+    </tbody>
+  </table>
 
 
 </div>

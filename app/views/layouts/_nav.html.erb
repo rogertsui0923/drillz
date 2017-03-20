@@ -8,18 +8,24 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a
-      style="background-image: url(<%= image_path("logo.png") %>);"
-      class="navbar-brand" href="/"></a>
+
+      <a style="background-image: url(<%= image_path("logo.png") %>);" class="navbar-brand" href="/drill_groups"></a>
+
     </div>
+
+
 
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <form class="navbar-form navbar-right">
     </form>
     <ul class="nav navbar-nav">
-      <li><%= link_to 'Drillz', drill_groups_path %></li>
-      <li><%= link_to 'Leaderboard', users_path %></li>
-      <li><%#=  %></li>
+      <% if user_signed_in? %>
+        <li><%= link_to 'Drillz', drill_groups_path %></li>
+        <li><%= link_to 'Leaderboard', users_path %></li>
+      <% end %>
+      <% if current_user&.is_admin? %>
+        <li><%= link_to 'Users', admin_index_path  %></li>
+      <% end %>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <% if user_signed_in? %>

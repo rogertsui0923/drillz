@@ -5,16 +5,18 @@
         <h3>Q : <%= @drill.description %></h3>
 
       <h4>Type your answer</h4>
-      <%= simple_form_for [@drill, @attempt],
-          url: drill_attempts_path(@drill),
-          method: :post,
-          html: { class: 'answer-form' } do |f| %>
-         <%= f.input :body, label: false, input_html: {class: 'form-group'} %>
+      <% if !flash[:submitted] %>
+        <%= simple_form_for [@drill, @attempt],
+            url: drill_attempts_path(@drill),
+            method: :post,
+            html: { class: 'answer-form' } do |f| %>
+           <%= f.input :body, label: false, input_html: {class: 'form-group'} %>
 
-         <% if !flash[:submitted] %>
            <%= f.submit :submit, class: 'btn btn-primary' %>
-         <% end %>
 
+        <% end %>
+      <% else  %>
+        <%= @attempt.body %>
       <% end %>
       <hr>
 
