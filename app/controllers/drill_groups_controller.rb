@@ -1,6 +1,6 @@
 class DrillGroupsController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_drill_group, except: [:index, :new, :create]
+  before_action :find_drill_group, except: [:index, :new, :create, :destroy]
   before_action :authorize, except: [:index]
 
   def index
