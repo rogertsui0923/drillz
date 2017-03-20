@@ -4,20 +4,23 @@
     <meta charset="utf-8">
     <title>CodeDrillz | May the Force be with You</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="landing.css">
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
   </head>
   <body>
 
-    <div id='stars'></div>
+    <!-- <div id='stars'></div>
     <div id='stars2'></div>
-    <div id='stars3'></div>
+    <div id='stars3'></div> -->
 
     <div class="section">
       <div class="section-items">
         <div class="speech-bubble"><p>Do or do not. There is no try.</p></div>
         <img class="yoda" src="yoda.svg">
-        <%= link_to 'Enter', new_user_path %>
+        <div class="action-buttons">
+          <%= link_to 'Sign Up', new_user_path %>
+          <%= link_to 'Login', new_session_path %>
+        </div>
       </div>
     </div>
 
