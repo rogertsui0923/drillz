@@ -16,7 +16,7 @@
 
       <%# elsif flash[:submitted] %>
       <% else %>
-      <p><%#= @submitted_attempt.body %></p>
+      <p><%= Attempt.find_by(group_session: @group_session, drill: @drill).body %></p>
         <% if @drill.next.nil? %>
         <%= button_to 'Done!', group_session_path(@group_session),
                                method: :get,
