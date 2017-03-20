@@ -152,3 +152,29 @@
   background-color: #3c3c3b;
   border-top: 1px solid #444;
 }
+//avatar choose
+.lightside {
+  background-color:#dcdcdc;
+  height: 100vh;
+}
+.darkside {
+  background-color: #3c3c3b;
+  height: 100vh;
+}
+@media screen  and (max-width: 765px){
+  .lightside, .darkside {
+    height:auto;
+  }
+}
+.avatar-choose {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #abc373;
+  padding: 10px;
+  padding-bottom: 15px;
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
