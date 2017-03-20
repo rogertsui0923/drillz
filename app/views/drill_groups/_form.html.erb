@@ -1,6 +1,3 @@
-
-<%#= @drill_group.errors.full_messages %>
-
 <%= simple_form_for @drill_group do |f| %>
   <%= f.input :name, required: false %>
   <%= f.input :description, required: false %>
@@ -11,5 +8,5 @@
                                   :first,
                                   :last %>
   <%= f.input :points, required: false %>
-  <%= f.submit 'Save' %>
+  <%= f.submit 'Save', class: 'btn btn-primary' %>
 <% end %>

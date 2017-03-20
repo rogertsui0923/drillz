@@ -45,34 +45,33 @@ class UsersController < ApplicationController
   def update
     user_params = params.require(:user).permit(:first_name, :last_name, :email)
     @user = current_user
-
-        if @user.update(user_params)
-          redirect_to user_path(@user)
-        else
-          render :edit
-        end
-  end
-
-  def update_password
-
-    @user = current_user
-
-    if @user.authenticate(params[:current_password])
-
-      if params[:current_password] === params[:password]
-        flash.now[:alert] =  "Passwords must be different than before"
-        render :edit
-      elsif @user.update(password: params[:password], password_confirmation: params[:password_confirmation])
-        redirect_to root_path(@user), notice: 'Password Updated'
-      else
-        flash.now[:alert] =  "Passwords don't match"
-        render :edit
-      end
-
+    if @user.update(user_params)
+      redirect_to root_path(@user)
     else
-      flash.now[:alert] = "Current password is Incorrect"
       render :edit
     end
+  end
+
+  def password
+    user_params = params.permit(:password, :password_confirmation)
+    old = params[:current_password]
+    @user = User.find params[:user_id]
+    if !@user&.authenticate(old)
+      flash[:modal] = true
+      @user.errors.add(:current_password, 'mismatch')
+      render :edit
+    elsif old == user_params[:password] && old == user_params[:password_confirmation]
+      flash[:modal] = true
+      @user.errors.add(:password, 'should be different from old password')
+      render :edit
+    elsif @user.update user_params
+      redirect_to edit_user_path(@user), notice: 'Password updated!'
+    else
+      flash.now[:alert] = 'Please fix errors!'
+      flash[:modal] = true
+      render :edit
+    end
+
   end
 
 end

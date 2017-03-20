@@ -1,4 +1,5 @@
 class AttemptsController < ApplicationController
+  before_action :authenticate_user!
   # before_action :find_solution, only: :create
 
   def create
@@ -24,19 +25,20 @@ class AttemptsController < ApplicationController
 
     if correct
       @attempt.success = true
+      @attempt.body = solution_params[:body]
       @attempt.save
       @group_session.points =  @group_session.points +  @group_session.drill_group.points
       @group_session.save
       redirect_to drill_path(params[:drill_id]), notice: 'SUCCESS!'
      else
-       redirect_to drill_path(params[:drill_id]), alert: 'Not Correct'
+      @attempt.body = solution_params[:body]
+      @attempt.save
+      redirect_to drill_path(params[:drill_id]), alert: 'Not Correct'
      end
   end
 
-  # private
-  #
-  # def find_solution
-  #   @solution = Solution.find params[:drill_id]
-  # end
-
+  private
+  def find_solution
+    @solution = Solution.find params[:drill_id]
+  end
 end
