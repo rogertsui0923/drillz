@@ -35,6 +35,14 @@
 }
 
 /* Drill Group Show - Single */
+.drill-group-actbuttons {
+  display: flex;
+}
+
+.btn.btn-primary.actbutton:first-child {
+  margin-right: 10px;
+}
+
 .drill-button.toggle-button {
   margin-right: 10px;
 }

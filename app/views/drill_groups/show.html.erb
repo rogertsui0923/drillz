@@ -3,9 +3,15 @@
     <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
       <h1><%= @drill_group.name %></h1>
 
-      <%= button_to 'Edit Group', edit_drill_group_path(@drill_group),
-                            method: :get,
-                            class: 'btn btn-primary' %>
+      <div class="drill-group-actbuttons">
+        <%= button_to 'Edit Group', edit_drill_group_path(@drill_group),
+                              method: :get,
+                              class: 'btn btn-primary actbutton' %>
+
+        <%= button_to 'Delete Group', drill_group_path(@drill_group),
+                              method: :delete,
+                              class: 'btn btn-primary actbutton' %>
+      </div>
 
       <p class="drill-description"><%= @drill_group.description %></p>
       <!-- Drill Form -->
