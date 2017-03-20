@@ -126,5 +126,18 @@
   }
 }
 .lightsaber {
-  margin: 0px;  
+  margin: 0px;
+  height: 35px;
+}
+.password-status {
+  font-family: $font-stack;
+  color: $offwhite;
+  font-size: 15px;
+  font-weight: 100;
+  align-self: center;
+  font-style: italic;
+}
+.password-strength {
+  display: flex;
+  justify-content: space-between;
 }
