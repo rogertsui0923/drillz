@@ -113,3 +113,23 @@ a.toggle-button, a.drill-button {
   position: absolute;
   bottom: 0;
 }
+
+.nav-tabs {
+  border-bottom: 1px solid #333;
+    li a:hover {
+      background-color: $black;
+      border: 1px solid #333;
+      color: $offwhite; 
+    }
+}
+
+.nav-tabs > li.active > a {
+  background-color: $black;
+  border: 1px solid $darkblack;
+  color: $offwhite;
+    &:hover {
+      background-color: $black;
+      border: 1px solid $darkblack;
+      color: $green;
+    }
+}
