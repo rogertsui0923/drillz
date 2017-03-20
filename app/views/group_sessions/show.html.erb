@@ -10,7 +10,8 @@
   <% drill = attempt.drill %>
   <div class="drill">
     <h3><%= "Drill #{drill_counter += 1}: #{drill.description}" %></h3>
-    <div class="btn btn-primary">
+      <p>Your Answer: <%= attempt.body %></p>
+      <div class="btn btn-primary">
       <%= attempt.success ? 'Correct' : 'Incorrect' %>
     </div>
     <div class="drill-solutions">

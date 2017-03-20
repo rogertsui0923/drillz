@@ -6,6 +6,10 @@
 <%= button_to 'Edit Group', edit_drill_group_path(@drill_group),
                             method: :get,
                             class: 'btn btn-primary' %>
+<!-- New code -->
+<%= button_to 'Delete Group', drill_group_path(@drill_group),
+                              method: :delete,
+                              class: 'btn btn-primary' %>
 
 <h3><%= @drill_group.description %></h3>
 
