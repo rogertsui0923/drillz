@@ -141,3 +141,14 @@
   display: flex;
   justify-content: space-between;
 }
+.modal-body {
+  background-color: $black;
+}
+.modal-header {
+  background-color: $black;
+  border-bottom: 1px solid #444;
+}
+.modal-footer {
+  background-color: #3c3c3b;
+  border-top: 1px solid #444;
+}

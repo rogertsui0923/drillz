@@ -27,7 +27,7 @@
       <% end %>
 
       <%= form_tag user_password_path(current_user), method: "put"  do %>
-      <div id="passwordModal" class="modal fade" role="dialog">
+      <div id="passwordModal" class="modal fade modal-style" role="dialog">
         <div class="modal-dialog">
 
           <!-- Modal content-->
@@ -53,7 +53,7 @@
                   <%= password_field_tag :password_confirmation, nil, class: 'form-control form-input' %>
                 </div>
 
-                <%= submit_tag "Save Changes", class: 'btn'  %>
+                <%= submit_tag "Save Changes", class: 'btn btn-primary'  %>
               <%end%>
               <% if flash[:modal] %>
               <script type="text/javascript">
@@ -62,7 +62,7 @@
               <% end %>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
             </div>
           </div>
         </div>
