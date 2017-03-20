@@ -22,6 +22,9 @@ h1, h2, h3, h4, h5, h6, p, a, td, th {
 a {
   color: $green;
   font-size: 15px;
+}
+
+p {
   font-weight: 100;
 }
 
@@ -41,6 +44,10 @@ label {
 
 input {
   color: $black;
+}
+
+input.btn.btn-primary {
+  letter-spacing: 0.1em;
 }
 
 .form-control {
