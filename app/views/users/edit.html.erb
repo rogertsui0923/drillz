@@ -30,6 +30,7 @@
         </div>
       <% end %>
 
+      <%= form_tag user_password_path(current_user), method: "put"  do %>
       <div id="passwordModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
@@ -40,29 +41,33 @@
               <h4 class="modal-title">Modal Header</h4>
             </div>
             <div class="modal-body">
-              <%= form_for @user do |f|%>
+              <p class="text-danger"><%= @user.errors.full_messages.join(', ') %></p>
                 <div class = "field form-group ">
-                  <%= f.label :new_password, class: ' control-label form-label' %>
-                  <%= f.password_field :password, class: 'form-control form-input' %>
+                  <%= label_tag :current_password, nil, class: ' control-label form-label' %>
+                  <%= password_field_tag :current_password, nil,class: 'form-control form-input' %>
                 </div>
 
                 <div class="field form-group ">
-                  <%= f.label :password, class: ' control-label form-label' %>
-                  <%= f.password_field :password, class: 'form-control form-input' %>
+                  <%= label_tag :password, nil, class: ' control-label form-label' %>
+                  <%= password_field_tag :password, nil, class: 'form-control form-input' %>
                 </div>
 
                 <div class="field form-group ">
-                  <%= f.label :password_confirmation, class: 'control-label form-label' %>
-                  <%= f.password_field :password_confirmation, class: 'form-control form-input' %>
+                  <%= label_tag :password_confirmation, nil, class: 'control-label form-label' %>
+                  <%= password_field_tag :password_confirmation, nil, class: 'form-control form-input' %>
                 </div>
 
-                <%= f.submit class: 'btn'  %>
+                <%= submit_tag "Save Changes", class: 'btn'  %>
               <%end%>
+              <% if flash[:modal] %>
+              <script type="text/javascript">
+              $("#passwordModal").modal()
+              </script>
+              <% end %>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
-
           </div>
         </div>
       </div>

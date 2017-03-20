@@ -44,5 +44,27 @@ class UsersController < ApplicationController
         end
   end
 
+  def password
+    user_params = params.permit(:password, :password_confirmation)
+    old = params[:current_password]
+    @user = User.find params[:user_id]
+    if !@user&.authenticate(old)
+      flash[:modal] = true
+      @user.errors.add(:current_password, 'mismatch')
+      render :edit
+    elsif old == user_params[:password] && old == user_params[:password_confirmation]
+      flash[:modal] = true
+      @user.errors.add(:password, 'should be different from old password')
+      render :edit
+    elsif @user.update user_params
+      redirect_to edit_user_path(@user), notice: 'Password updated!'
+    else
+      flash.now[:alert] = 'Please fix errors!'
+      flash[:modal] = true
+      render :edit
+    end
+
+  end
+
 
 end
