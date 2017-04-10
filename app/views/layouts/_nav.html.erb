@@ -1,0 +1,44 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <a style="background-image: url(<%= image_path("logo.png") %>);" class="navbar-brand" href="/drill_groups"></a>
+
+    </div>
+
+
+
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <form class="navbar-form navbar-right">
+    </form>
+    <ul class="nav navbar-nav">
+      <% if user_signed_in? %>
+        <li><%= link_to 'Drillz', drill_groups_path %></li>
+        <li><%= link_to 'Leaderboard', users_path %></li>
+      <% end %>
+      <% if current_user&.is_admin? %>
+        <li><%= link_to 'Users', admin_index_path  %></li>
+      <% end %>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <% if user_signed_in? %>
+        <li><%= link_to current_user.first_name + ' ' + current_user.last_name, user_path(current_user) %></li>
+        <li><%= link_to 'Sign Out', session_path(current_user), method: :delete %></li>
+      <% else %>
+        <li><%= link_to 'Sign Up', new_user_path %></li>
+        <li><%= link_to 'Sign In', new_session_path %></li>
+      <% end %>
+        <!-- <li><a>Hello, Basia</a></li>
+        <li><a>Profile</a></li>
+        <li><a>Sign Out</a></li> -->
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</div><!-- /.container-fluid -->
+</nav>

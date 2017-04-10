@@ -1,0 +1,11 @@
+// Place all the styles related to the sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.login-actions {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.login-actions a:nth-child(1) {
+  margin-bottom: 7px;
+}

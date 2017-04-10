@@ -1,0 +1,10 @@
+.drill-group-container {
+  padding-top: 20px;
+}
+
+.attempt-drill-button {
+  padding: 5px 10px;
+  background-color: goldenrod;
+  display: inline-block;
+  border-radius: 2px;
+}

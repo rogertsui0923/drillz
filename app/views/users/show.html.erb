@@ -1,0 +1,29 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 text-center">
+      <div class="view-user-profile">
+        <div class="large-profile">
+          <% if current_user.is_admin?  %>
+            <%= image_tag("chewie.png", :class=>"avatar")%> 
+          <% else %>
+            <%= image_tag("light_avatar.png", :class=>"avatar")%>
+          <% end %>
+        </div>
+        <h2><%= @user.first_name + ' ' + @user.last_name %></h2>
+        <div class="user-stats">
+          <p><%= @user.email %></p>
+          <p>Points: <%= @user.points %></p>
+          <p>Donuts: <%= @user.donuts %>
+            <% if @user.donuts > 0 %>
+              <%= image_tag('doughnut.png', :class=>'small-doughnut')%>
+            <% end %>
+          </p>
+        </div>
+        <div>
+          <p class="edit-action"><%= link_to 'Edit', edit_user_path(current_user) %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

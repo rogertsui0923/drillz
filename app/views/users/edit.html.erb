@@ -1,0 +1,72 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+      <h1>Edit Account<h1>
+        <%= @user.errors.full_messages.join(', ') %>
+        <div class="form-group">
+          <%= form_for @user do |f|%>
+          <div>
+            <%= f.label :first_name %>
+            <%= f.text_field :first_name, class: 'form-control' %>
+          </div>
+          <div>
+            <%= f.label :last_name %>
+            <%= f.text_field :last_name, class: 'form-control' %>
+          </div>
+          <div>
+            <%= f.label :email %>
+            <%= f.email_field :email, class: 'form-control' %>
+          </div>
+          <div class="action-items">
+            <%= f.submit class: 'btn btn-primary'  %>
+            <a href="#" data-toggle="modal" data-target="#passwordModal">
+              Change Password
+            </a>
+          </div>
+        </div>
+      <% end %>
+
+      <%= form_tag user_password_path(current_user), method: "put"  do %>
+      <div id="passwordModal" class="modal fade modal-style" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Change Password</h4>
+            </div>
+            <div class="modal-body">
+              <p class="text-danger"><%= @user.errors.full_messages.join(', ') %></p>
+                <div class = "field form-group ">
+                  <%= label_tag :current_password, nil, class: ' control-label form-label' %>
+                  <%= password_field_tag :current_password, nil,class: 'form-control form-input' %>
+                </div>
+
+                <div class="field form-group ">
+                  <%= label_tag :password, nil, class: ' control-label form-label' %>
+                  <%= password_field_tag :password, nil, class: 'form-control form-input' %>
+                </div>
+
+                <div class="field form-group ">
+                  <%= label_tag :password_confirmation, nil, class: 'control-label form-label' %>
+                  <%= password_field_tag :password_confirmation, nil, class: 'form-control form-input' %>
+                </div>
+
+                <%= submit_tag "Save Changes", class: 'btn btn-primary'  %>
+              <%end%>
+              <% if flash[:modal] %>
+              <script type="text/javascript">
+              $("#passwordModal").modal()
+              </script>
+              <% end %>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

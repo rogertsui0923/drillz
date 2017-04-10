@@ -1,0 +1,135 @@
+// Place all the styles related to the drill_groups controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* Drill Group Index - Admin */
+.drill-group-item {
+  border-bottom: 2px solid #444;
+  padding-bottom: 15px;
+    &:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+}
+
+.drill-group-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 10px;
+}
+
+.action-button, .drill-button {
+  padding: 5px;
+  border-radius: 2px;
+  background-color: goldenrod;
+    a {
+      color: $darkblack;
+      &:hover {
+        color: $offwhite;
+      }
+    }
+}
+
+.action-button:not(:last-child) {
+  margin-right: 10px;
+}
+
+/* Drill Group Show - Single */
+.drill-group-actbuttons {
+  display: flex;
+}
+
+.btn.btn-primary.actbutton:first-child {
+  margin-right: 10px;
+}
+
+.drill-button.toggle-button {
+  margin-right: 10px;
+}
+
+a.toggle-button, a.drill-button {
+  color: $darkblack;
+    &:hover {
+      color: $offwhite;
+    }
+}
+
+.drill-description {
+  font-size: 1.5rem;
+  margin-top: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid #444;
+}
+
+.bottom-drill-description {
+  font-size: 1.5rem;
+}
+
+.drill {
+  padding-top: 30px;
+  border-top: 2px solid #444;
+  // border-bottom: 2px solid #444;
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.save-drill-button {
+  margin-top: 7px;
+  padding-bottom: 15px;
+}
+
+/* Drill Group Index - User */
+.left-col {
+  display: inline-block;
+  float: left;
+}
+
+.tab-text {
+  margin-top: 20px;
+}
+
+.drills-box {
+  background-color: $darkblack;
+  width: 100%;
+  height: 30vh;
+  margin: 0 5px;
+  margin-bottom: 20px;
+  padding-left: 10px;
+  position: relative;
+}
+
+.my-drill-buttons {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+}
+
+.start-coding {
+  padding-right: 10px;
+}
+
+.position-button {
+  position: absolute;
+  bottom: 0;
+}
+
+.nav-tabs {
+  border-bottom: 1px solid #333;
+    li a:hover {
+      background-color: $black;
+      border: 1px solid #333;
+      color: $offwhite; 
+    }
+}
+
+.nav-tabs > li.active > a {
+  background-color: $black;
+  border: 1px solid $darkblack;
+  color: $offwhite;
+    &:hover {
+      background-color: $black;
+      border: 1px solid $darkblack;
+      color: $green;
+    }
+}

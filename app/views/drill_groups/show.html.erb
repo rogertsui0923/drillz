@@ -1,0 +1,43 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+      <h1><%= @drill_group.name %></h1>
+
+      <div class="drill-group-actbuttons">
+        <%= button_to 'Edit Group', edit_drill_group_path(@drill_group),
+                              method: :get,
+                              class: 'btn btn-primary actbutton' %>
+
+        <%= button_to 'Delete Group', drill_group_path(@drill_group),
+                              method: :delete,
+                              class: 'btn btn-primary actbutton' %>
+      </div>
+
+      <p class="drill-description"><%= @drill_group.description %></p>
+      <!-- Drill Form -->
+      <div>
+        <h2>Add New Drill</h2>
+          <label>Drill Description</label>
+          <%= render partial: 'drill_form', locals: {drill: @drill} %>
+      </div>
+      <!-- Drill List -->
+      <% if @drills.present? %>
+        <% @drills.each do |drill| %>
+
+          <div class="drill">
+            <p class="bottom-drill-description"><%= drill.description %></p>
+              <%# 👇 need to change after implementing SlideDown thing %>
+            <div class="drill-group-actions">
+              <%= link_to 'Edit', '#', class: 'drill-button toggle-button slide' %>
+              <%= link_to 'Delete', drill_path(drill), method: :delete, class: 'drill-button' %>
+            </div>
+            <div class="show-form">
+            <%# 👇 this form will slide down when 'Edit' button clicked %>
+              <%= render partial: 'edit_drill_form', locals: {drill: drill} %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

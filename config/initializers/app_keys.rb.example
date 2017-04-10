@@ -1,0 +1,4 @@
+#duplicate this file to another one named 'app_keys.rb'
+
+ENV["EMAIL_USER_NAME"] = 'PUT REAL VALUE HERE'
+ENV["EMAIL_PASSWORD"] = 'PUT REAL VALUE HERE'

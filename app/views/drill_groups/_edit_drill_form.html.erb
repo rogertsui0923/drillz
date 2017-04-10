@@ -1,0 +1,12 @@
+<div>
+  <%= simple_form_for drill do |f| %>
+    <%= f.input :description, required: false %>
+    <%= f.simple_fields_for :solutions do |s| %>
+      <%= render 'solution_fields', f: s %>
+    <% end %>
+    <div>
+      <%= link_to_add_association 'Add Another Solution', f, :solutions %>
+    </div>
+    <%= f.submit 'Edit Drill', class: 'btn btn-primary' %>
+  <% end %>
+</div>

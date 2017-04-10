@@ -1,0 +1,80 @@
+$( document ).ready(function() {
+
+  //Password Strength meter JS
+  $('.password-field').on('keyup', function({currentTarget}){
+    const passwordVal = currentTarget.value;
+    let passwordStrength = calculatePassStrength(passwordVal);
+
+    if (passwordStrength === 0) {
+      $('.lightsaber').attr("src", "<%= image_path "saberHandle.svg"%>");
+      $('.password-status').html("");
+    } else if (passwordStrength === 1) {
+      $('.lightsaber').attr("src", "<%= image_path "smallSaber.svg"%>");
+      let status = 'Weak';
+      $('.password-status').html(status);
+    } else if (passwordStrength === 2){
+      $('.lightsaber').attr("src", "<%= image_path "mediumSaber.svg"%>");
+      let status = 'Medium';
+      $('.password-status').html(status);
+    } else if (passwordStrength === 3) {
+      $('.lightsaber').attr("src", "<%= image_path "bigSaber.svg"%>");
+      let status = 'Strong';
+      $('.password-status').html(status);
+    }
+
+  });
+
+  // Lightside/Darkside JS
+  $('.lightside').on('mouseenter', function({currentTarget}){
+    $('.light').toggleClass('hovered-avatar');
+  });
+  $('.lightside').on('mouseleave', function(event){
+    $('.light').toggleClass('hovered-avatar');
+  });
+
+  $('.darkside').on('mouseenter', function({currentTarget}){
+    $('.dark').toggleClass('hovered-avatar');
+  });
+  $('.darkside').on('mouseleave', function(event){
+    $('.dark').toggleClass('hovered-avatar');
+  });
+
+});
+
+//Pasword strength function
+let numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9' ]
+let alphabet = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P',
+'Q','R','S','T','U','V','W','X','Y','Z']
+
+function calculatePassStrength (password) {
+  let strength = 0;
+  let containsCap = false;
+  let containsNum = false;
+
+  if (password.length >= 8) {
+    strength = 1;
+  }
+
+  for (let letter of alphabet) {
+    if (password.includes(letter) && password.length >= 8) {
+      containsCap = true;
+    }
+  }
+
+  for (let number of numbers) {
+    if (password.includes(number) && password.length >= 8) {
+      containsNum = true;
+    }
+  }
+
+
+  if (containsCap) {
+    strength += 1;
+  }
+
+  if (containsNum) {
+    strength += 1;
+  }
+
+  return strength;
+}

@@ -1,0 +1,76 @@
+/* Font styling */
+$font-stack: 'Lato', sans-serif;
+
+/* Colors */
+$black: #3c3c3b;
+$darkblack: #333333;
+$white: #ffffff;
+$offwhite: #dcdcdc;
+$pink: #ad9289;
+$green: #abc373;
+$gold: goldenrod;
+
+body {
+  background-color: $black;
+}
+
+h1, h2, h3, h4, h5, h6, p, a, td, th {
+  font-family: $font-stack;
+  color: $offwhite;
+}
+
+a {
+  color: $green;
+  font-size: 15px;
+}
+
+p {
+  font-weight: 100;
+}
+
+a:hover {
+  text-decoration: none;
+  color: darken($green, 20%);
+}
+
+/* Form Styling */
+
+label {
+  color: $offwhite;
+  font-weight: 100;
+  font-size: 1.5rem;
+  letter-spacing: 0.75px;
+}
+
+input {
+  color: $black;
+}
+
+input.btn.btn-primary {
+  letter-spacing: 0.1em;
+}
+
+label.collection_radio_buttons {
+  margin-left: 10px;
+  padding-right: 10px;
+}
+
+.form-control {
+  background-color: #333;
+  border: 1px solid #222;
+  color: $offwhite;
+}
+
+.btn-primary {
+  background-color: $green;
+  border: none;
+  font-weight: 100;
+    &:hover {
+      background-color: darken($green, 22%);
+    }
+}
+
+#password_reset{
+display: none;
+
+}
